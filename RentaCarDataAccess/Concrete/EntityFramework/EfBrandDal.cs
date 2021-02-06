@@ -6,7 +6,7 @@ using System.Text;
 
 namespace RentaCarDataAccess.Concrete.EntityFramework
 {
-    public class EfBrandDal : BaseEntityRepository<Brand>
+    public class EfBrandDal : BaseEntityRepository<Brand>, IBrandDal
     {
 
     }

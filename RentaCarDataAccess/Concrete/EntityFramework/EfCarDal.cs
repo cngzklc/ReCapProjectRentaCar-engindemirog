@@ -6,7 +6,8 @@ using System.Text;
 
 namespace RentaCarDataAccess.Concrete.EntityFramework
 {
-    public class EfCarDal : BaseEntityRepository<Car>
+    public class EfCarDal : BaseEntityRepository<Car>, ICarDal
     {
+
     }
 }

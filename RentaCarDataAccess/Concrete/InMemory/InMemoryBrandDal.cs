@@ -3,11 +3,12 @@ using RentaCarEntities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace RentaCarDataAccess.Concrete.InMemory
 {
-    public class InMemoryBrandDal : IBrandDal_Alternatif
+    public class InMemoryBrandDal : IEntityRepository<Brand>
     {
         List<Brand> _brands;
         public InMemoryBrandDal()
@@ -36,14 +37,29 @@ namespace RentaCarDataAccess.Concrete.InMemory
             _brands.Remove(brandToDelete);
         }
 
-        public List<Brand> GetAll()
+        public Brand Get(Expression<Func<Brand, bool>> filter)
         {
-            throw new NotImplementedException();
+            var query = filter.Compile();
+            return (Brand)_brands.SingleOrDefault(query.Invoke);
+        }
+
+        public List<Brand> GetAll(Expression<Func<Brand, bool>> filter = null)
+        {
+            if (filter == null)
+            {
+                return _brands;
+            }
+            else
+            {
+                var query = filter.Compile();
+                return _brands.Where(query.Invoke).ToList();
+            }
         }
 
         public void Update(Brand brand)
         {
-            throw new NotImplementedException();
+            Brand brandToUpdate = _brands.SingleOrDefault(b => b.BrandId == brand.BrandId);
+            brandToUpdate.BrandName = brand.BrandName;
         }
     }
 }

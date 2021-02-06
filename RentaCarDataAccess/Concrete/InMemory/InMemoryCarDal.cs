@@ -3,11 +3,12 @@ using RentaCarEntities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace RentaCarDataAccess.Concrete.InMemory
 {
-    class InMemoryCarDal : ICarDal_Alternatif
+    class InMemoryCarDal : ICarDal
     {
         List<Car> _cars;
         public InMemoryCarDal()
@@ -32,19 +33,33 @@ namespace RentaCarDataAccess.Concrete.InMemory
             _cars.Remove(carToDelete);
         }
 
-        public List<Car> GetAll()
+        public Car Get(Expression<Func<Car, bool>> filter)
         {
-            throw new NotImplementedException();
+            var query = filter.Compile();
+            return (Car)_cars.SingleOrDefault(query.Invoke);
         }
 
-        public int GetById(Car car)
+        public List<Car> GetAll(Expression<Func<Car, bool>> filter = null)
         {
-            throw new NotImplementedException();
+            if (filter == null)
+            {
+                return _cars;
+            }
+            else
+            {
+                var query = filter.Compile();
+                return _cars.Where(query.Invoke).ToList();
+            }
         }
 
         public void Update(Car car)
         {
-            throw new NotImplementedException();
+            Car carToUpdate = _cars.SingleOrDefault(c => c.CarId == car.CarId);
+            carToUpdate.BrandId = car.BrandId;
+            carToUpdate.ColorId = car.ColorId;
+            carToUpdate.DailyPrice = car.DailyPrice;
+            carToUpdate.Description = car.Description;
+            carToUpdate.ModelYear = car.ModelYear;
         }
     }
 }

@@ -5,8 +5,7 @@ using System.Text;
 
 namespace RentaCarDataAccess.Abstract
 {
-    public interface IBrandDal_Alternatif:IEntityRepository<Brand>
+    public interface IColorDal : IEntityRepository<Color>
     {
-
     }
 }

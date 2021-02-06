@@ -6,7 +6,7 @@ using System.Text;
 
 namespace RentaCarDataAccess.Concrete.EntityFramework
 {
-    public class EfColorDal :BaseEntityRepository<Color>
+    public class EfColorDal :BaseEntityRepository<Color>, IColorDal
     {
 
     }
