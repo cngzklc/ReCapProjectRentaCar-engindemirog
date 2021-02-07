@@ -1,11 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RentaCarDataAccess.Concrete.EntityFramework;
-using RentaCarEntities.Abstract;
+using Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
+using Core.DataAccess;
 
 namespace RentaCarDataAccess.Abstract
 {

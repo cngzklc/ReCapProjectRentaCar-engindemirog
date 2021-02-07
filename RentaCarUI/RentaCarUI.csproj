@@ -5,4 +5,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\RentaCarBusiness\RentaCarBusiness.csproj" />
+    <ProjectReference Include="..\RentaCarDataAccess\RentaCarDataAccess.csproj" />
+    <ProjectReference Include="..\RentaCarEntities\RentaCarEntities.csproj" />
+  </ItemGroup>
+
 </Project>

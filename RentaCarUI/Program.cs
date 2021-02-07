@@ -1,4 +1,7 @@
-﻿using System;
+﻿using RentaCarBusiness.Concrete;
+using RentaCarDataAccess.Concrete.InMemory;
+using RentaCarDataAccess.Concrete.EntityFramework;
+using System;
 
 namespace RentaCarUI
 {
@@ -6,7 +9,11 @@ namespace RentaCarUI
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            CarManager carManager = new CarManager(new EfCarDal());
+            foreach (var car in carManager.GetAll())
+            {
+                Console.WriteLine(car.Description);
+            }
         }
     }
 }

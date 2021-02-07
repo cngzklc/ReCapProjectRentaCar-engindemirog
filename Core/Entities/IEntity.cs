@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace RentaCarEntities.Abstract
+namespace Core.Entities
 {
     public interface IEntity
     {
-
     }
 }

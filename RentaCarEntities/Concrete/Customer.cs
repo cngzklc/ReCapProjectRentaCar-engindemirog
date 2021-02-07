@@ -1,11 +1,11 @@
-﻿using RentaCarEntities.Abstract;
+﻿using Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace RentaCarEntities.Concrete
 {
-    public class Customer:IEntity
+    public class Customer: IEntity
     {
         public int CustomerId { get; set; }
         public string FirstName { get; set; }

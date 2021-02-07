@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
-using RentaCarEntities.Abstract;
+using Core.Entities;
 
-namespace RentaCarDataAccess.Abstract
+namespace Core.DataAccess
 {
     public interface IEntityRepository<T> where T: class, IEntity, new()
     {

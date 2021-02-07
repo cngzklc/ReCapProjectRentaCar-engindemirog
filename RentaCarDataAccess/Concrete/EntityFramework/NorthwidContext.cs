@@ -10,7 +10,7 @@ namespace RentaCarDataAccess.Concrete.EntityFramework
     {
         protected override void OnConfiguring(DbContextOptionsBuilder dbContextOptionsBuilder)
         {
-            dbContextOptionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=ReCapProjectRenraCar; Trusted_Connection=true");
+            dbContextOptionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Database=ReCapProjectRentaCar; Trusted_Connection=true");
         }
 
         public DbSet<Car> Cars;

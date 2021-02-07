@@ -1,4 +1,5 @@
-﻿using RentaCarDataAccess.Abstract;
+﻿using Core.DataAccess;
+using RentaCarDataAccess.Abstract;
 using RentaCarEntities.Concrete;
 using System;
 using System.Collections.Generic;

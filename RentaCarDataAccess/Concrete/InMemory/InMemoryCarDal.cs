@@ -1,4 +1,5 @@
 ﻿using RentaCarDataAccess.Abstract;
+using RentaCarDataAccess.DTOs;
 using RentaCarEntities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Text;
 
 namespace RentaCarDataAccess.Concrete.InMemory
 {
-    class InMemoryCarDal : ICarDal
+    public class InMemoryCarDal : ICarDal
     {
         List<Car> _cars;
         public InMemoryCarDal()
@@ -50,6 +51,11 @@ namespace RentaCarDataAccess.Concrete.InMemory
                 var query = filter.Compile();
                 return _cars.Where(query.Invoke).ToList();
             }
+        }
+
+        public List<CarDetailDto> GetProductDetails()
+        {
+            throw new NotImplementedException();
         }
 
         public void Update(Car car)
