@@ -13,8 +13,8 @@ namespace RentaCarDataAccess.Concrete.EntityFramework
             dbContextOptionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Database=ReCapProjectRentaCar; Trusted_Connection=true");
         }
 
-        public DbSet<Car> Cars;
-        public DbSet<Color> Colors;
-        public DbSet<Brand> Brands;
+        public DbSet<Car> Cars { get; set; }
+        public DbSet<Color> Colors { get; set; }
+        public DbSet<Brand> Brands { get; set; }
     }
 }

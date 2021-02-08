@@ -7,12 +7,12 @@ namespace RentaCarEntities.Concrete
 {
     public class Car : IEntity
     {
-        public int CarId { get; set; }
-        public int BrandId { get; set; }
-        public int ColorId { get; set; }
-        public int ModelYear { get; set; }
-        public decimal DailyPrice { get; set; }
-        public string Description { get; set; }
+                                                    public int CarId { get; set; }
+                                                    public int BrandId { get; set; }
+                                                    public int ColorId { get; set; }
+                                                    public int ModelYear { get; set; }
+                                                    public decimal DailyPrice { get; set; }
+                                                    public string Description { get; set; }
         //public string Serial { get; set; }
         //public string Model { get; set; }
         //public FuelEnum Fuel { get; set; }
