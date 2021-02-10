@@ -8,6 +8,6 @@ namespace RentaCarDataAccess.Abstract
 {
     public interface ICarDal : IEntityRepository<Car>
     {
-        List<CarDetailDto> GetProductDetails();
+        List<CarDetailDto> GetCarDetails();
     }
 }

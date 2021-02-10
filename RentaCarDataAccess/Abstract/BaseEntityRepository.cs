@@ -13,7 +13,7 @@ namespace RentaCarDataAccess.Abstract
     {
         public virtual void Add(T entity)
         {
-            using (NorthwindContext context = new NorthwindContext())
+            using (RentaCarContext context = new RentaCarContext())
             {
                 var addedEntity = context.Entry(entity);
                 addedEntity.State = EntityState.Added;
@@ -23,7 +23,7 @@ namespace RentaCarDataAccess.Abstract
 
         public virtual void Delete(T entity)
         {
-            using (NorthwindContext context = new NorthwindContext())
+            using (RentaCarContext context = new RentaCarContext())
             {
                 var deleteEntity = context.Entry(entity);
                 deleteEntity.State = EntityState.Deleted;
@@ -32,7 +32,7 @@ namespace RentaCarDataAccess.Abstract
         }
         public virtual void Update(T entity)
         {
-            using (NorthwindContext context = new NorthwindContext())
+            using (RentaCarContext context = new RentaCarContext())
             {
                 var deleteEntity = context.Entry(entity);
                 deleteEntity.State = EntityState.Deleted;
@@ -41,14 +41,14 @@ namespace RentaCarDataAccess.Abstract
         }
         public T Get(Expression<Func<T, bool>> filter)
         {
-            using (NorthwindContext context = new NorthwindContext())
+            using (RentaCarContext context = new RentaCarContext())
             {
                 return context.Set<T>().SingleOrDefault(filter);
             }
         }
         public List<T> GetAll(Expression<Func<T, bool>> filter = null)
         {
-            using (NorthwindContext context = new NorthwindContext())
+            using (RentaCarContext context = new RentaCarContext())
             {
                 return filter == null ?
                     context.Set<T>().ToList() :

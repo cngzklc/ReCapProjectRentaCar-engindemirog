@@ -25,7 +25,23 @@ namespace RentaCarDataAccess.Concrete.InMemory
         }
         public void Add(Car car)
         {
-            _cars.Add(car);
+            if (car.CarName.Length < 2)
+            {
+                Console.WriteLine("Araba ismi minimum 2 karakter olmalı!");
+
+            }
+            else
+            {
+                if (car.DailyPrice <= 0)
+                {
+                    Console.WriteLine("Günlük kiralama ücreti sıfırdan büyük olmalı!");
+                }
+                else
+                {
+                    _cars.Add(car);
+                }
+            }
+
         }
 
         public void Delete(Car car)
@@ -53,7 +69,7 @@ namespace RentaCarDataAccess.Concrete.InMemory
             }
         }
 
-        public List<CarDetailDto> GetProductDetails()
+        public List<CarDetailDto> GetCarDetails()
         {
             throw new NotImplementedException();
         }

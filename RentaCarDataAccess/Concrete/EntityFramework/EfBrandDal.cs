@@ -4,7 +4,7 @@ using RentaCarEntities.Concrete;
 
 namespace RentaCarDataAccess.Concrete.EntityFramework
 {
-    public class EfBrandDal : EfEntityRepositoryBase<Brand, NorthwindContext>, IBrandDal
+    public class EfBrandDal : EfEntityRepositoryBase<Brand, RentaCarContext>, IBrandDal
     {
 
     }

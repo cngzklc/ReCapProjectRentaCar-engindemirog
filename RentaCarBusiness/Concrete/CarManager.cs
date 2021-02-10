@@ -32,7 +32,7 @@ namespace RentaCarBusiness.Concrete
 
         public List<CarDetailDto> GetCarDetails()
         {
-            return _carDal.GetProductDetails();
+            return _carDal.GetCarDetails();
         }
     }
 }
