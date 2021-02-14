@@ -6,8 +6,7 @@ using System.Text;
 
 namespace RentaCarDataAccess.Abstract
 {
-    public interface IBrandDal : IEntityRepository<Brand>
+    public interface ICustomerDal:IEntityRepository<Customer>
     {
-
     }
 }

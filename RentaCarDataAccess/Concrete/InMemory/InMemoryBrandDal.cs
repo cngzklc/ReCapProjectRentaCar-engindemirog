@@ -1,4 +1,4 @@
-﻿using Core.DataAccess;
+﻿using Core.DataAccess.Abstract;
 using RentaCarDataAccess.Abstract;
 using RentaCarEntities.Concrete;
 using System;

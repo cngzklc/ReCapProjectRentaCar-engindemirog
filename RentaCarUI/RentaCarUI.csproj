@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj" />
     <ProjectReference Include="..\RentaCarBusiness\RentaCarBusiness.csproj" />
     <ProjectReference Include="..\RentaCarDataAccess\RentaCarDataAccess.csproj" />
     <ProjectReference Include="..\RentaCarEntities\RentaCarEntities.csproj" />

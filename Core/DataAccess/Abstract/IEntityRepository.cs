@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
 using Core.Entities;
+using Core.MernisAdapter;
 
-namespace Core.DataAccess
+namespace Core.DataAccess.Abstract
 {
     public interface IEntityRepository<T> where T: class, IEntity, new()
     {

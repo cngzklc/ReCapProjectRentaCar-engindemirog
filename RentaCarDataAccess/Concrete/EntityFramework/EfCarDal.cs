@@ -23,7 +23,8 @@ namespace RentaCarDataAccess.Concrete.EntityFramework
                                   CarName=c.CarName,
                                   BrandName = b.BrandName,
                                   ColorName = o.ColorName,
-                                  DailyPrice = c.DailyPrice
+                                  DailyPrice = c.DailyPrice,
+                                  Description = c.Description
                               };
                 return resault.ToList();
             }

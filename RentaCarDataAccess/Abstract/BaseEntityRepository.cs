@@ -5,11 +5,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using Core.DataAccess;
+using Core.DataAccess.Abstract;
+using Core.MernisAdapter;
 
 namespace RentaCarDataAccess.Abstract
 {
-    public abstract class BaseEntityRepository<T> : IEntityRepository<T> where T : class, IEntity, new()
+    public abstract class BaseEntityRepository<T> : IPersonCheckService, IEntityRepository<T> where T : class, IEntity, new()
     {
         public virtual void Add(T entity)
         {
@@ -20,7 +21,6 @@ namespace RentaCarDataAccess.Abstract
                 context.SaveChanges();
             }
         }
-
         public virtual void Delete(T entity)
         {
             using (RentaCarContext context = new RentaCarContext())
@@ -54,6 +54,10 @@ namespace RentaCarDataAccess.Abstract
                     context.Set<T>().ToList() :
                     context.Set<T>().Where(filter).ToList();
             }
+        }
+        public bool CheckIfRealPerson(IPerson person)
+        {
+            throw new NotImplementedException();
         }
     }
 }

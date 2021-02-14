@@ -10,13 +10,13 @@ namespace RentaCarEntities.Concrete
     {
         string _carName;
         decimal _dailyPrice;
+        public int BrandId { get; set; }
         public int CarId { get; set; }
         public string CarName
         {
             get { return _carName; }
-            set { if (value.Length < 2) { throw new Exception("Araba ismi 2 karakterden uzun olmalı"); } else {  _carName = value; } }
+            set { if (value.Length < 2) { throw new Exception("Araba ismi 2 karakterden uzun olmalı"); } else { _carName = value; } }
         }
-        public int BrandId { get; set; }
         public int ColorId { get; set; }
         public int ModelYear { get; set; }
         public decimal DailyPrice

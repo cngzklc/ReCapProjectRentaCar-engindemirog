@@ -21,7 +21,7 @@ namespace RentaCarBusiness.Concrete
 
         public Brand GetById(int brandId)
         {
-            throw new NotImplementedException();
+            return _brandDal.Get(p => p.BrandId == brandId);
         }
     }
 }
