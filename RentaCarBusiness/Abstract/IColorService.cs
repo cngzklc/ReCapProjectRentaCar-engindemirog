@@ -1,4 +1,5 @@
-﻿using RentaCarEntities.Concrete;
+﻿using Core.Utilities.Results.Abstract;
+using RentaCarEntities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,7 +8,7 @@ namespace RentaCarBusiness.Abstract
 {
     public interface IColorService
     {
-        List<Color> GetAll();
-        Color GetById(int colorId);
+        IDataResult<List<Color>> GetAll();
+        IDataResult<Color> GetById(int colorId);
     }
 }

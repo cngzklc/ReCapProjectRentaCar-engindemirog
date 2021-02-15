@@ -1,4 +1,6 @@
-﻿using RentaCarBusiness.Abstract;
+﻿using Core.Utilities.Results.Abstract;
+using Core.Utilities.Results.Concrete;
+using RentaCarBusiness.Abstract;
 using RentaCarDataAccess.Abstract;
 using RentaCarEntities.Concrete;
 using System;
@@ -14,14 +16,20 @@ namespace RentaCarBusiness.Concrete
         {
             _customerDal = customerDal;
         }
-        public List<Customer> GetAll()
+
+        public IDataResult<Customer> GetCustomer(int customerId)
         {
-            return _customerDal.GetAll();
+            return new SuccessDataResult<Customer>(_customerDal.Get(c => c.CustomerId == customerId));
         }
 
-        public List<Customer> GetAllByUserId(int id)
+        public IDataResult<List<Customer>> GetAll()
         {
-            return _customerDal.GetAll(p => p.UserId == id);
+            return new SuccessDataResult<List<Customer>>(_customerDal.GetAll());
+        }
+
+        public IDataResult<List<Customer>> GetAllByUserId(int id)
+        {
+            return new SuccessDataResult<List<Customer>>(_customerDal.GetAll(p => p.UserId == id));
         }
     }
 }

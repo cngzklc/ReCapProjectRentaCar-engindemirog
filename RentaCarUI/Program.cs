@@ -6,6 +6,7 @@ using RentaCarEntities.Concrete;
 using Core.Constants;
 using Core.MernisAdapter;
 using Core.DataAccess.EntityFramework;
+using RentaCarDataAccess.DTOs;
 
 namespace RentaCarUI
 {
@@ -14,9 +15,16 @@ namespace RentaCarUI
         static void Main(string[] args)
         {
             //CarAdd();
+            //UserAdd();
+            //RentalAdd();
 
-
-            UserAdd();
+            EfRentalDal efRentalDal = new EfRentalDal();
+            var rentableCar = efRentalDal.GetRentableCars();
+            foreach (var item in rentableCar)
+            {
+                Console.WriteLine("{0}     , {1}     , {2}      ", item.BrandName, item.CarName, item.Description);
+            }
+            //RentableCarDto rentableCarDto = new RentableCarDto() { };
 
             //MernisAdapterTest();
 
@@ -28,6 +36,16 @@ namespace RentaCarUI
             //Car car = new Car();
             //car.CarName ="d";
             //Console.WriteLine(car.CarName);
+        }
+
+        private static void RentalAdd()
+        {
+            EfRentalDal efRentalDal = new EfRentalDal();
+            RentalManager rentalManager = new RentalManager(efRentalDal);
+            Rental rental = new Rental() { CustomerId = 1, CarId = 1, RentDate = DateTime.Now.Date, ReturnDate = null };
+            rentalManager.Add(rental);
+            string message = rentalManager.Add(rental).Message;
+            Console.WriteLine(message);
         }
 
         private static void MernisAdapterTest()
@@ -57,9 +75,11 @@ namespace RentaCarUI
                 Password = "1234",
                 Email = "eylulll.kilic@gmail.com"
             };
-            EfUserDal efUserDal = new EfUserDal(new MernisServiceAdapter());
-            efUserDal.Add(user);
-            Console.WriteLine("Kişi eklenmiştir");
+            EfUserDal efUserDal = new EfUserDal();
+            UserManager userManager = new UserManager(efUserDal);
+            Console.WriteLine(userManager.Add(user, new MernisServiceAdapter()).Message);
+
+            //Console.WriteLine("Kişi eklenmiştir");
         }
 
         private static void CarAdd()
