@@ -1,4 +1,5 @@
 ﻿using Core.Utilities.Results.Abstract;
+using RentaCarDataAccess.DTOs;
 using RentaCarEntities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -14,5 +15,6 @@ namespace RentaCarBusiness.Abstract
         IResult Add(Rental rental);
         IResult Delete(Rental rental);
         IResult Update(Rental rental);
+        IDataResult<List<NotRentableCarDto>> GetNotRentableCarDetails();
     }
 }

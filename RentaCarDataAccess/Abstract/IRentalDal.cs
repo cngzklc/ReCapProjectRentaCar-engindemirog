@@ -9,6 +9,6 @@ namespace RentaCarDataAccess.Abstract
 {
     public interface IRentalDal : IEntityRepository<Rental>
     {
-        List<RentableCarDto> GetRentableCars();
+        List<NotRentableCarDto> GetNotRentableCarDetails();
     }
 }

@@ -7,6 +7,7 @@ using Core.Constants;
 using Core.MernisAdapter;
 using Core.DataAccess.EntityFramework;
 using RentaCarDataAccess.DTOs;
+using System.Collections.Generic;
 
 namespace RentaCarUI
 {
@@ -18,13 +19,14 @@ namespace RentaCarUI
             //UserAdd();
             //RentalAdd();
 
-            EfRentalDal efRentalDal = new EfRentalDal();
-            var rentableCar = efRentalDal.GetRentableCars();
-            foreach (var item in rentableCar)
+            //Rental_NotRentableCarsDetails();
+
+            CarManager carManager = new CarManager(new InMemoryCarDal());
+            foreach (var item in carManager.GetRentableCars())
             {
-                Console.WriteLine("{0}     , {1}     , {2}      ", item.BrandName, item.CarName, item.Description);
+                Console.WriteLine("{0}{1}", item.CarName.PadRight(10), item.Description.PadRight(20));
             }
-            //RentableCarDto rentableCarDto = new RentableCarDto() { };
+            
 
             //MernisAdapterTest();
 
@@ -36,6 +38,24 @@ namespace RentaCarUI
             //Car car = new Car();
             //car.CarName ="d";
             //Console.WriteLine(car.CarName);
+        }
+
+        private static void Rental_NotRentableCarsDetails()
+        {
+            RentalManager rentalManager = new RentalManager(new InMemoryRentalDal());
+
+            List<NotRentableCarDto> rentableCars = rentalManager.GetNotRentableCarDetails().Data;
+
+            foreach (var item in rentableCars)
+            {
+                Console.WriteLine("{0}{1}{2}{3}{4}{5}",
+                    item.BrandName.PadRight(10),
+                    item.CarName.PadRight(10),
+                    item.Description.PadRight(20),
+                    item.CompanyName.PadRight(15),
+                    item.FirstName.PadRight(10),
+                    item.LastName.PadRight(10));
+            }
         }
 
         private static void RentalAdd()
@@ -52,12 +72,7 @@ namespace RentaCarUI
         {
             User user = new User()
             {
-                FirstName = "Cengiz",
-                LastName = "Kılıç",
-                NationalId = "25684908800",
-                DateOfBirth = new DateTime(1985, 7, 8),
-                Password = "1234",
-                Email = "cngzklc@gmail.com"
+                FirstName = "Cengiz",LastName = "Kılıç",NationalId = "25684908800",DateOfBirth = new DateTime(1985, 7, 8),Password = "1234",Email = "cngzklc@gmail.com"
             };
             MernisServiceAdapter mernisServiceAdapter = new MernisServiceAdapter();
             var resaultt = mernisServiceAdapter.CheckIfRealPerson(user);
@@ -116,7 +131,7 @@ namespace RentaCarUI
 
         private static void CarTest()
         {
-            CarManager carManager = new CarManager(new EfCarDal());
+            CarManager carManager = new CarManager(new InMemoryCarDal());
             foreach (var car in carManager.GetAll())
             {
                 Console.WriteLine(car.Description);

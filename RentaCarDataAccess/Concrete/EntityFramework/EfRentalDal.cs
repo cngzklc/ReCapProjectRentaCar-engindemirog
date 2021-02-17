@@ -10,22 +10,27 @@ namespace RentaCarDataAccess.Concrete.EntityFramework
 {
     public class EfRentalDal : EfEntityRepositoryBase<Rental, RentaCarContext>, IRentalDal
     {
-        public List<RentableCarDto> GetRentableCars()
+        public List<NotRentableCarDto> GetNotRentableCarDetails()
         {
             using (RentaCarContext context = new RentaCarContext())
             {
                 var result = from c in context.Cars
                              join b in context.Brands on c.BrandId equals b.BrandId
-                             join r in context.Rentals on c.CarId equals r.CarId
-                             
-                             where r.ReturnDate.Equals(null)
+                             join r in context.Rentals on c.CarId equals r.CarId where r.ReturnDate == null
+                             join cu in context.Customers on r.CustomerId equals cu.CustomerId
+                             join u in context.Users on cu.UserId equals u.UserId
 
-                             select new RentableCarDto
+
+                             select new NotRentableCarDto
                              {
                                  CarId = c.CarId,
                                  BrandName = b.BrandName,
                                  CarName = c.CarName,
-                                 Description = c.Description
+                                 Description = c.Description,
+                                 CompanyName = cu.CompanyName,
+                                 FirstName = u.FirstName,
+                                 LastName = u.LastName,
+                                 ReturnDate = r.ReturnDate
                              };
                 return result.ToList();
 

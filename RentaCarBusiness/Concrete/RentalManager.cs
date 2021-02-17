@@ -19,6 +19,7 @@ namespace RentaCarBusiness.Concrete
             _rentalDal = rentalDal;
         }
 
+
         public IResult Add(Rental rental)
         {
             var result = RentableCar(rental.CarId);
@@ -32,7 +33,6 @@ namespace RentaCarBusiness.Concrete
                 return new ErrorResult(RentableCar(rental.CarId).Message);
             }
         }
-
 
         public IResult Delete(Rental rental)
         {
@@ -64,7 +64,13 @@ namespace RentaCarBusiness.Concrete
 
         public IResult Update(Rental rental)
         {
-            throw new NotImplementedException();
+            return new SuccessResult(Messages.Updated(rental));
+            _rentalDal.Update(rental);
+        }
+
+        public IDataResult<List<NotRentableCarDto>> GetNotRentableCarDetails()
+        {
+            return new SuccessDataResult<List<NotRentableCarDto>>(_rentalDal.GetNotRentableCarDetails());
         }
     }
 }

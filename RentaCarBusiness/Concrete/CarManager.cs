@@ -34,5 +34,15 @@ namespace RentaCarBusiness.Concrete
         {
             return _carDal.GetCarDetails();
         }
+
+        public List<Car> GetNotRentableCars()
+        {
+            return _carDal.GetNotRentableCars();
+        }
+
+        public List<Car> GetRentableCars()
+        {
+            return _carDal.GetRentableCars();
+        }
     }
 }

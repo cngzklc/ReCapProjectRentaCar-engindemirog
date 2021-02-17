@@ -12,5 +12,8 @@ namespace RentaCarBusiness.Abstract
         List<Car> GetAllByBrandId(int id);
         List<Car> GetByDailyPrice(decimal min, decimal max);
         List<CarDetailDto> GetCarDetails();
+        List<Car> GetNotRentableCars();
+        List<Car> GetRentableCars();
+
     }
 }

@@ -9,5 +9,8 @@ namespace RentaCarDataAccess.Abstract
     public interface ICarDal : IEntityRepository<Car>
     {
         List<CarDetailDto> GetCarDetails();
+        List<Car> GetRentableCars();
+        List<Car> GetNotRentableCars();
+        
     }
 }
