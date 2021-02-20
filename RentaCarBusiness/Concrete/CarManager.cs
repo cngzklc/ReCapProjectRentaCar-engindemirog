@@ -1,4 +1,6 @@
-﻿using RentaCarBusiness.Abstract;
+﻿using Core.Utilities.Results.Abstract;
+using Core.Utilities.Results.Concrete;
+using RentaCarBusiness.Abstract;
 using RentaCarDataAccess.Abstract;
 using RentaCarDataAccess.DTOs;
 using RentaCarEntities.Concrete;
@@ -15,34 +17,43 @@ namespace RentaCarBusiness.Concrete
         {
             _carDal = carDal;
         }
-        public List<Car> GetAll()
+        public IDataResult<List<Car>> GetAll()
         {
-            return _carDal.GetAll();
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll());
         }
 
-        public List<Car> GetAllByBrandId(int id)
+        public IDataResult<List<Car>> GetAllByBrandId(int id)
         {
-            return _carDal.GetAll(c => c.BrandId == id);
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.BrandId == id));
         }
 
-        public List<Car> GetByDailyPrice(decimal min, decimal max)
+        public IDataResult<List<Car>> GetByDailyPrice(decimal min, decimal max)
         {
-            return _carDal.GetAll(c => c.DailyPrice >= min && c.DailyPrice <= max);
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.DailyPrice >= min && c.DailyPrice <= max));
         }
 
-        public List<CarDetailDto> GetCarDetails()
+        public IDataResult<List<CarDetailDto>> GetCarDetails()
         {
-            return _carDal.GetCarDetails();
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails());
         }
 
-        public List<Car> GetNotRentableCars()
+        public IDataResult<List<Car>> GetNotRentableCars()
         {
-            return _carDal.GetNotRentableCars();
+            return new SuccessDataResult<List<Car>>(_carDal.GetNotRentableCars());
         }
 
-        public List<Car> GetRentableCars()
+        public IDataResult<List<Car>> GetRentableCars()
         {
-            return _carDal.GetRentableCars();
+            return new SuccessDataResult<List<Car>>(_carDal.GetRentableCars());
+        }
+        public IDataResult<List<Car>> GetRentableCars2()
+        {
+            return new SuccessDataResult<List<Car>>( _carDal.GetRentableCars());
+        }
+
+        public IDataResult<List<CarDetailDto>> GetRentableCarsDto()
+        {
+            return new SuccessDataResult<List<CarDetailDto>>( _carDal.GetRentableCarsDto());
         }
     }
 }

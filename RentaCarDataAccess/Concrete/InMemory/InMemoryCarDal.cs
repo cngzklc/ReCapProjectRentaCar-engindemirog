@@ -1,4 +1,5 @@
 ﻿using RentaCarDataAccess.Abstract;
+using RentaCarDataAccess.Comparer;
 using RentaCarDataAccess.DTOs;
 using RentaCarEntities.Concrete;
 using System;
@@ -72,23 +73,31 @@ namespace RentaCarDataAccess.Concrete.InMemory
         }
         public List<CarDetailDto> GetCarDetails()
         {
-            throw new NotImplementedException();
+            InMemoryBrandDal brandDal = new InMemoryBrandDal();
+            InMemoryColorDal colorDal = new InMemoryColorDal();
+
+            var resault = from c in GetAll()
+                          join b in brandDal.GetAll() on c.BrandId equals b.BrandId
+                          join o in colorDal.GetAll() on c.ColorId equals o.ColorId
+
+                          select new CarDetailDto
+                          {
+                              CarName = c.CarName,
+                              BrandName = b.BrandName,
+                              ColorName = o.ColorName,
+                              DailyPrice = c.DailyPrice,
+                              Description = c.Description
+                          };
+            return resault.ToList();
         }
         public List<Car> GetNotRentableCars()
         {
             InMemoryRentalDal inMemoryRentalDal = new InMemoryRentalDal();
-            InMemoryBrandDal inMemoryBrandDal = new InMemoryBrandDal();
-            InMemoryCustomerDal inMemoryCustomerDal = new InMemoryCustomerDal();
-            InMemoryUserDal inMemoryUserDal = new InMemoryUserDal();
-
-            List<Car> _cars = GetAll();
             List<Rental> _rentals = inMemoryRentalDal.GetAll();
-            List<Brand> _brands = inMemoryBrandDal.GetAll();
-            List<Customer> _customers = inMemoryCustomerDal.GetAll();
-            List<User> _users = inMemoryUserDal.GetAll();
 
             var result = from c in _cars
-                         join r in _rentals on c.CarId equals r.CarId where r.ReturnDate == null
+                         join r in _rentals on c.CarId equals r.CarId
+                         where r.ReturnDate == null
 
                          select new Car
                          {
@@ -99,16 +108,17 @@ namespace RentaCarDataAccess.Concrete.InMemory
                              ModelYear = c.ModelYear,
                              DailyPrice = c.DailyPrice,
                              Description = c.Description
-
                          };
+
             return result.ToList();
         }
-        public List<Car> GetRentableCars() /*=> GetAll().Except(GetNotRentableCars()).ToList();*/
+        public List<Car> GetRentableCars2() /*=> GetAll().Except(GetNotRentableCars()).ToList();*/
+        { 
+            return GetAll().Except(GetNotRentableCars(), new CarComparer()).ToList();
+        }
+        public List<Car> GetRentableCars() 
         {
-            List<Car> _cars = GetAll().ToList(); //-----> Toplam 9 adet araba var.
-            List<Car> _notRentableCars = GetNotRentableCars().ToList(); //---> Toplam 2 adet araba var.
-            List<Car> rentableCars = _cars.Except(_notRentableCars).ToList();  /* ---> Except ile dönüş 7 adet olması gerekiyor fakat 9 adet araba listesi geliyor.*/
-            return rentableCars.ToList();
+            return  GetAll().Where(c => !GetNotRentableCars().Any(nrc => nrc.CarId == c.CarId)).ToList();
         }
         public void Update(Car car)
         {
@@ -118,6 +128,26 @@ namespace RentaCarDataAccess.Concrete.InMemory
             carToUpdate.DailyPrice = car.DailyPrice;
             carToUpdate.Description = car.Description;
             carToUpdate.ModelYear = car.ModelYear;
+        }
+
+        public List<CarDetailDto> GetRentableCarsDto()
+        {
+            InMemoryBrandDal brandDal = new InMemoryBrandDal();
+            InMemoryColorDal colorDal = new InMemoryColorDal();
+
+            var resault = from c in GetAll()
+                          join b in brandDal.GetAll() on c.BrandId equals b.BrandId
+                          join o in colorDal.GetAll() on c.ColorId equals o.ColorId
+
+                          select new CarDetailDto
+                          {
+                              CarName = c.CarName,
+                              BrandName = b.BrandName,
+                              ColorName = o.ColorName,
+                              DailyPrice = c.DailyPrice,
+                              Description = c.Description
+                          };
+            return resault.ToList();
         }
     }
 }

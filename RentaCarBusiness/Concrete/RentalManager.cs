@@ -36,7 +36,8 @@ namespace RentaCarBusiness.Concrete
 
         public IResult Delete(Rental rental)
         {
-            throw new NotImplementedException();
+            _rentalDal.Delete(rental);
+            return new SuccessResult(Messages.Deleted(rental));
         }
 
         public IDataResult<List<Rental>> GetAllCustomerId(int customerId)
@@ -64,8 +65,8 @@ namespace RentaCarBusiness.Concrete
 
         public IResult Update(Rental rental)
         {
-            return new SuccessResult(Messages.Updated(rental));
             _rentalDal.Update(rental);
+            return new SuccessResult(Messages.Updated(rental));
         }
 
         public IDataResult<List<NotRentableCarDto>> GetNotRentableCarDetails()

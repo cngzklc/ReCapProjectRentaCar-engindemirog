@@ -84,8 +84,7 @@ namespace RentaCarDataAccess.Concrete.InMemory
                                  CompanyName = cu.CompanyName,
                                  FirstName = u.FirstName,
                                  LastName=u.LastName,
-                                 ReturnDate = r.ReturnDate
-                                 
+                                 ReturnDate = r.ReturnDate                                 
                              } ;
             return result.ToList();
             

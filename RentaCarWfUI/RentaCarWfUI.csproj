@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4FC430D1-FC10-47CC-9ED3-F6D2ECB0A921}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>RentaCarWfUI</RootNamespace>
+    <AssemblyName>RentaCarWfUI</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Forms\EntitiesFormBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EntitiesFormBase.Designer.cs">
+      <DependentUpon>EntitiesFormBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Form_01_BrandManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form_01_BrandManager.Designer.cs">
+      <DependentUpon>Form_01_BrandManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Form_00_MainScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form_00_MainScreen.designer.cs">
+      <DependentUpon>Form_00_MainScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\EntitiesFormBase.resx">
+      <DependentUpon>EntitiesFormBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Form_01_BrandManager.resx">
+      <DependentUpon>Form_01_BrandManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Form_00_MainScreen.resx">
+      <DependentUpon>Form_00_MainScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Find.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Percent.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RowFirst.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RowLast.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RowNext.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RowPrevious.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Exit.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cascade.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Horizantal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Vertical.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Closeall.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{adbd4cd9-2e1e-4b57-9055-e5a43b8ea0cb}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RentaCarBusiness\RentaCarBusiness.csproj">
+      <Project>{55a57a44-8f31-4b32-ab31-6eee05ced5fc}</Project>
+      <Name>RentaCarBusiness</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RentaCarDataAccess\RentaCarDataAccess.csproj">
+      <Project>{cef56dce-4770-4b30-b8f8-e16b0f326bad}</Project>
+      <Name>RentaCarDataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RentaCarEntities\RentaCarEntities.csproj">
+      <Project>{daa66171-91f5-4962-a1f3-da46f1b322bf}</Project>
+      <Name>RentaCarEntities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
