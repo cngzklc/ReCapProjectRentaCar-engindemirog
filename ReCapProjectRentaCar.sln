@@ -15,6 +15,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentaCarWfUI", "RentaCarWfUI\RentaCarWfUI.csproj", "{4FC430D1-FC10-47CC-9ED3-F6D2ECB0A921}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RentaCarWinForms", "RentaCarWinForms\RentaCarWinForms.csproj", "{E48E8376-2B6D-446C-8C50-B5A846FC7303}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentaCarWepAPI", "RentaCarWepAPI\RentaCarWepAPI.csproj", "{8DAF8D9F-70B3-4640-8B4E-65AE8D82187A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,14 @@ Global
 		{4FC430D1-FC10-47CC-9ED3-F6D2ECB0A921}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4FC430D1-FC10-47CC-9ED3-F6D2ECB0A921}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4FC430D1-FC10-47CC-9ED3-F6D2ECB0A921}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E48E8376-2B6D-446C-8C50-B5A846FC7303}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E48E8376-2B6D-446C-8C50-B5A846FC7303}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E48E8376-2B6D-446C-8C50-B5A846FC7303}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E48E8376-2B6D-446C-8C50-B5A846FC7303}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DAF8D9F-70B3-4640-8B4E-65AE8D82187A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DAF8D9F-70B3-4640-8B4E-65AE8D82187A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DAF8D9F-70B3-4640-8B4E-65AE8D82187A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DAF8D9F-70B3-4640-8B4E-65AE8D82187A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

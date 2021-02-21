@@ -1,15 +1,12 @@
-﻿using System.ComponentModel;
-using System.Windows.Forms;
-using System.Drawing;
-
-namespace RentaCarWfUI.Forms
+﻿
+namespace RentaCarWinForms.Forms
 {
     partial class EntitiesFormBase
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private IContainer components = null;
+        private System.ComponentModel.IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -30,53 +27,62 @@ namespace RentaCarWfUI.Forms
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        protected void InitializeComponent()
+        private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EntitiesFormBase));
-            this.ToolStripMenu = new System.Windows.Forms.ToolStrip();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.BtnFirstRow = new System.Windows.Forms.ToolStripButton();
             this.BtnPrevious = new System.Windows.Forms.ToolStripButton();
             this.LblCounter = new System.Windows.Forms.ToolStripLabel();
             this.BtnNext = new System.Windows.Forms.ToolStripButton();
             this.BtnLastRow = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.Separator1 = new System.Windows.Forms.ToolStripSeparator();
             this.BtnSave = new System.Windows.Forms.ToolStripButton();
             this.BtnAdd = new System.Windows.Forms.ToolStripButton();
             this.BtnDelete = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.Separator2 = new System.Windows.Forms.ToolStripSeparator();
             this.BtnFind = new System.Windows.Forms.ToolStripButton();
-            this.TbxId = new System.Windows.Forms.ToolStripTextBox();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.TbxFind = new System.Windows.Forms.ToolStripTextBox();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.DgvTable = new System.Windows.Forms.DataGridView();
-            this.ToolStripMenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvTable)).BeginInit();
             this.SuspendLayout();
             // 
-            // ToolStripMenu
+            // panel1
             // 
-            this.ToolStripMenu.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.ToolStripMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.toolStrip1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(729, 109);
+            this.panel1.TabIndex = 0;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.BtnFirstRow,
             this.BtnPrevious,
             this.LblCounter,
             this.BtnNext,
             this.BtnLastRow,
-            this.toolStripSeparator1,
+            this.Separator1,
             this.BtnSave,
             this.BtnAdd,
             this.BtnDelete,
-            this.toolStripSeparator2,
+            this.Separator2,
             this.BtnFind,
-            this.TbxId});
-            this.ToolStripMenu.Location = new System.Drawing.Point(0, 0);
-            this.ToolStripMenu.Name = "ToolStripMenu";
-            this.ToolStripMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.ToolStripMenu.Size = new System.Drawing.Size(800, 25);
-            this.ToolStripMenu.TabIndex = 14;
-            this.ToolStripMenu.Text = "toolStrip1";
+            this.TbxFind});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(725, 25);
+            this.toolStrip1.TabIndex = 0;
+            this.toolStrip1.Text = "toolStrip1";
             // 
             // BtnFirstRow
             // 
@@ -85,8 +91,7 @@ namespace RentaCarWfUI.Forms
             this.BtnFirstRow.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.BtnFirstRow.Name = "BtnFirstRow";
             this.BtnFirstRow.Size = new System.Drawing.Size(23, 22);
-            this.BtnFirstRow.Text = "İlk Kayıt";
-            this.BtnFirstRow.Click += new System.EventHandler(this.BtnFirstRow_Click);
+            this.BtnFirstRow.Text = "First Row";
             // 
             // BtnPrevious
             // 
@@ -95,14 +100,14 @@ namespace RentaCarWfUI.Forms
             this.BtnPrevious.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.BtnPrevious.Name = "BtnPrevious";
             this.BtnPrevious.Size = new System.Drawing.Size(23, 22);
-            this.BtnPrevious.Text = "Geri";
-            this.BtnPrevious.Click += new System.EventHandler(this.BtnPrevious_Click);
+            this.BtnPrevious.Text = "Previous";
             // 
             // LblCounter
             // 
             this.LblCounter.Name = "LblCounter";
-            this.LblCounter.Size = new System.Drawing.Size(26, 22);
-            this.LblCounter.Text = "0/0";
+            this.LblCounter.Size = new System.Drawing.Size(30, 22);
+            this.LblCounter.Text = "0 / 0";
+            this.LblCounter.ToolTipText = "Counter";
             // 
             // BtnNext
             // 
@@ -111,8 +116,7 @@ namespace RentaCarWfUI.Forms
             this.BtnNext.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.BtnNext.Name = "BtnNext";
             this.BtnNext.Size = new System.Drawing.Size(23, 22);
-            this.BtnNext.Text = "İleri";
-            this.BtnNext.Click += new System.EventHandler(this.BtnNext_Click);
+            this.BtnNext.Text = "Next";
             // 
             // BtnLastRow
             // 
@@ -121,13 +125,12 @@ namespace RentaCarWfUI.Forms
             this.BtnLastRow.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.BtnLastRow.Name = "BtnLastRow";
             this.BtnLastRow.Size = new System.Drawing.Size(23, 22);
-            this.BtnLastRow.Text = "Son Kayıt";
-            this.BtnLastRow.Click += new System.EventHandler(this.BtnLastRow_Click);
+            this.BtnLastRow.Text = "Last Row";
             // 
-            // toolStripSeparator1
+            // Separator1
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            this.Separator1.Name = "Separator1";
+            this.Separator1.Size = new System.Drawing.Size(6, 25);
             // 
             // BtnSave
             // 
@@ -136,8 +139,7 @@ namespace RentaCarWfUI.Forms
             this.BtnSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.BtnSave.Name = "BtnSave";
             this.BtnSave.Size = new System.Drawing.Size(23, 22);
-            this.BtnSave.Text = "Kaydet";
-            this.BtnSave.Click += new System.EventHandler(this.BtnSave_Click);
+            this.BtnSave.Text = "Save";
             // 
             // BtnAdd
             // 
@@ -146,8 +148,7 @@ namespace RentaCarWfUI.Forms
             this.BtnAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.BtnAdd.Name = "BtnAdd";
             this.BtnAdd.Size = new System.Drawing.Size(23, 22);
-            this.BtnAdd.Text = "Ekle";
-            this.BtnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
+            this.BtnAdd.Text = "Add";
             // 
             // BtnDelete
             // 
@@ -156,44 +157,38 @@ namespace RentaCarWfUI.Forms
             this.BtnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.BtnDelete.Name = "BtnDelete";
             this.BtnDelete.Size = new System.Drawing.Size(23, 22);
-            this.BtnDelete.Text = "Sil";
-            this.BtnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
+            this.BtnDelete.Text = "Delete";
             // 
-            // toolStripSeparator2
+            // Separator2
             // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            this.Separator2.Name = "Separator2";
+            this.Separator2.Size = new System.Drawing.Size(6, 25);
             // 
             // BtnFind
             // 
+            this.BtnFind.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.BtnFind.Image = ((System.Drawing.Image)(resources.GetObject("BtnFind.Image")));
             this.BtnFind.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.BtnFind.Name = "BtnFind";
-            this.BtnFind.Size = new System.Drawing.Size(45, 22);
-            this.BtnFind.Text = "Ara";
-            this.BtnFind.Click += new System.EventHandler(this.BtnFind_Click);
+            this.BtnFind.Size = new System.Drawing.Size(23, 22);
+            this.BtnFind.Text = "Find";
             // 
-            // TbxId
+            // TbxFind
             // 
-            this.TbxId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TbxId.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.TbxId.Name = "TbxId";
-            this.TbxId.Size = new System.Drawing.Size(100, 25);
-            this.TbxId.TextChanged += new System.EventHandler(this.TbxId_TextChanged);
+            this.TbxFind.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TbxFind.Name = "TbxFind";
+            this.TbxFind.Size = new System.Drawing.Size(100, 25);
+            this.TbxFind.ToolTipText = "Find Text";
             // 
-            // splitContainer1
+            // panel2
             // 
-            this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 25);
-            this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.DgvTable);
-            this.splitContainer1.Size = new System.Drawing.Size(695, 338);
-            this.splitContainer1.SplitterDistance = 88;
-            this.splitContainer1.TabIndex = 15;
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.DgvTable);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 109);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(729, 307);
+            this.panel2.TabIndex = 1;
             // 
             // DgvTable
             // 
@@ -202,47 +197,58 @@ namespace RentaCarWfUI.Forms
             this.DgvTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DgvTable.Location = new System.Drawing.Point(0, 0);
             this.DgvTable.Name = "DgvTable";
-            this.DgvTable.Size = new System.Drawing.Size(691, 242);
+            this.DgvTable.RowTemplate.Height = 25;
+            this.DgvTable.Size = new System.Drawing.Size(725, 303);
             this.DgvTable.TabIndex = 0;
             // 
             // EntitiesFormBase
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.splitContainer1);
-            this.Controls.Add(this.ToolStripMenu);
+            this.ClientSize = new System.Drawing.Size(729, 416);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.Name = "EntitiesFormBase";
             this.Text = "EntitiesFormBase";
             this.Load += new System.EventHandler(this.EntitiesFormBase_Load);
-            this.ToolStripMenu.ResumeLayout(false);
-            this.ToolStripMenu.PerformLayout();
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
+            this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DgvTable)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        protected ToolStrip ToolStripMenu;
-        protected ToolStripButton BtnFirstRow;
-        protected ToolStripButton BtnPrevious;
-        protected ToolStripLabel LblCounter;
-        protected ToolStripButton BtnNext;
-        protected ToolStripButton BtnLastRow;
-        protected ToolStripSeparator toolStripSeparator1;
-        protected ToolStripButton BtnSave;
-        protected ToolStripButton BtnAdd;
-        protected ToolStripButton BtnDelete;
-        protected ToolStripSeparator toolStripSeparator2;
-        protected ToolStripButton BtnFind;
-        protected SplitContainer splitContainer1;
-        protected DataGridView DgvTable;
-        protected ToolStripTextBox TbxId;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton BtnFirstRow;
+        private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
+        private System.Windows.Forms.ToolStripButton toolStripButton3;
+        private System.Windows.Forms.ToolStripButton toolStripButton4;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton toolStripButton5;
+        private System.Windows.Forms.ToolStripButton toolStripButton6;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripButton toolStripButton7;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
+        private System.Windows.Forms.ToolStripButton toolStripButton8;
+        private System.Windows.Forms.ToolStripButton BtnPrevious;
+        private System.Windows.Forms.ToolStripLabel LblCounter;
+        private System.Windows.Forms.ToolStripButton BtnNext;
+        private System.Windows.Forms.ToolStripButton BtnLastRow;
+        private System.Windows.Forms.ToolStripSeparator Separator1;
+        private System.Windows.Forms.ToolStripButton BtnSave;
+        private System.Windows.Forms.ToolStripButton BtnAdd;
+        private System.Windows.Forms.ToolStripButton BtnDelete;
+        private System.Windows.Forms.ToolStripSeparator Separator2;
+        private System.Windows.Forms.ToolStripButton BtnFind;
+        private System.Windows.Forms.ToolStripTextBox TbxFind;
+        private System.Windows.Forms.DataGridView DgvTable;
     }
 }

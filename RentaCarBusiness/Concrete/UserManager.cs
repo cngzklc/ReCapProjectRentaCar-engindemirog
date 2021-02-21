@@ -35,7 +35,10 @@ namespace RentaCarBusiness.Concrete
                 }
             }catch (Exception ex) { return new ErrorResult(ex.Message); }
         }
-
+        public IDataResult<User> GetById(int id)
+        {
+            return new SuccessDataResult<User>(_userDal.Get(u => u.UserId == id));
+        }
         public IResult Delete(User user)
         {
             _userDal.Delete(user);

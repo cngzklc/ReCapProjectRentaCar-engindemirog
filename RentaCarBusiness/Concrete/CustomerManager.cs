@@ -1,4 +1,5 @@
-﻿using Core.Utilities.Results.Abstract;
+﻿using Core.Constants;
+using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using RentaCarBusiness.Abstract;
 using RentaCarDataAccess.Abstract;
@@ -16,10 +17,26 @@ namespace RentaCarBusiness.Concrete
         {
             _customerDal = customerDal;
         }
-
-        public IDataResult<Customer> GetCustomer(int customerId)
+        public IResult Add(Customer customer)
         {
-            return new SuccessDataResult<Customer>(_customerDal.Get(c => c.CustomerId == customerId));
+            _customerDal.Add(customer);
+            return new SuccessResult(Messages.Added(customer));
+        }
+
+        public IResult Delete(Customer customer)
+        {
+            _customerDal.Delete(customer);
+            return new SuccessResult(Messages.Added(customer));
+        }
+
+        public IResult Update(Customer customer)
+        {
+            _customerDal.Update(customer);
+            return new SuccessResult(Messages.Added(customer));
+        }
+        public IDataResult<Customer> GetById(int id)
+        {
+            return new SuccessDataResult<Customer>(_customerDal.Get(c => c.CustomerId == id));
         }
 
         public IDataResult<List<Customer>> GetAll()

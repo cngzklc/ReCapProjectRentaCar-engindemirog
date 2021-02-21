@@ -1,4 +1,5 @@
-﻿using Core.Utilities.Results.Abstract;
+﻿using Core.Constants;
+using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using RentaCarBusiness.Abstract;
 using RentaCarDataAccess.Abstract;
@@ -16,6 +17,24 @@ namespace RentaCarBusiness.Concrete
         {
             _brandDal = brandDal;
         }
+
+        public IResult Add(Brand brand)
+        {
+            _brandDal.Add(brand);
+            return new SuccessResult(Messages.Added(brand));
+        }
+
+        public IResult Delete(Brand brand)
+        {
+            _brandDal.Delete(brand);
+            return new SuccessResult(Messages.Added(brand));
+        }
+
+        public IResult Update(Brand brand)
+        {
+            _brandDal.Update(brand);
+            return new SuccessResult(Messages.Added(brand));
+        }
         public IDataResult<List<Brand>> GetAll()
         {
             return new SuccessDataResult<List<Brand>>( _brandDal.GetAll());
@@ -25,5 +44,6 @@ namespace RentaCarBusiness.Concrete
         {
             return new SuccessDataResult<Brand>(_brandDal.Get(p => p.BrandId == brandId));
         }
+
     }
 }

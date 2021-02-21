@@ -25,13 +25,15 @@ namespace RentaCarBusiness.Concrete
             var result = RentableCar(rental.CarId);
             if (result.Success)
             {
-            _rentalDal.Add(rental);
+                _rentalDal.Add(rental);
                 return new SuccessResult(RentableCar(rental.CarId).Message);
             }
             else
             {
                 return new ErrorResult(RentableCar(rental.CarId).Message);
             }
+            //_rentalDal.Add(rental);
+            //return new SuccessResult(Messages.Added(rental));
         }
 
         public IResult Delete(Rental rental)
@@ -48,6 +50,10 @@ namespace RentaCarBusiness.Concrete
         public IDataResult<List<Rental>> GetAll()
         {
             return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll());
+        }
+        public IDataResult<Rental> GetById( int id)
+        {
+            return new SuccessDataResult<Rental>(_rentalDal.Get(r=> r.RentalId == id));
         }
 
         public IResult RentableCar(int carId)
