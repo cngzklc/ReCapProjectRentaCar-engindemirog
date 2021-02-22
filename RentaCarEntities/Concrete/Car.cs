@@ -8,22 +8,12 @@ namespace RentaCarEntities.Concrete
 {
     public class Car : IEntity
     {
-        string _carName;
-        decimal _dailyPrice;
         public int BrandId { get; set; }
         public int CarId { get; set; }
-        public string CarName
-        {
-            get { return _carName; }
-            set { if (value.Length < 2) { throw new Exception("Araba ismi 2 karakterden uzun olmalı"); } else { _carName = value; } }
-        }
+        public string CarName { get; set; }
         public int ColorId { get; set; }
         public int ModelYear { get; set; }
-        public decimal DailyPrice
-        {
-            get { return _dailyPrice; }
-            set { if (value <= 0) { throw new Exception("Günlük kiralama ücreti sıfırdan büyük olmalı"); } else { _dailyPrice = value; } }
-        }
+        public decimal DailyPrice { get; set; }
         public string Description { get; set; }
         //public string Serial { get; set; }
         //public string Model { get; set; }

@@ -1,7 +1,11 @@
-﻿using Core.Constants;
+﻿using Core.Aspects.Autofac.Validation;
+using Core.Constants;
+using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
+using FluentValidation;
 using RentaCarBusiness.Abstract;
+using RentaCarBusiness.ValidationRules.FluentValidation;
 using RentaCarDataAccess.Abstract;
 using RentaCarDataAccess.DTOs;
 using RentaCarEntities.Concrete;
@@ -14,6 +18,7 @@ namespace RentaCarBusiness.Concrete
     public class CarManager : ICarService
     {
         ICarDal _carDal;
+       
         public CarManager(ICarDal carDal)
         {
             _carDal = carDal;
@@ -56,8 +61,11 @@ namespace RentaCarBusiness.Concrete
         {
             return new SuccessDataResult<List<CarDetailDto>>( _carDal.GetRentableCarsDto());
         }
+
+        [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Car car)
         {
+            //ValidationTool.Validate(new CarValidator(), car); ,bunun yerine attribute olarak eklenecek
             _carDal.Add(car);
             return new SuccessResult(Messages.Added(car));
         }
