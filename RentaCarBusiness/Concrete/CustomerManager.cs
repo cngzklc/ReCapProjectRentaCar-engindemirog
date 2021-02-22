@@ -23,14 +23,16 @@ namespace RentaCarBusiness.Concrete
             return new SuccessResult(Messages.Added(customer));
         }
 
-        public IResult Delete(Customer customer)
+        public IResult Delete(int id)
         {
+            Customer customer = _customerDal.Get(c => c.CustomerId == id);
             _customerDal.Delete(customer);
             return new SuccessResult(Messages.Added(customer));
         }
 
-        public IResult Update(Customer customer)
+        public IResult Update(int id)
         {
+            Customer customer = _customerDal.Get(c => c.CustomerId == id);
             _customerDal.Update(customer);
             return new SuccessResult(Messages.Added(customer));
         }

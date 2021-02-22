@@ -47,9 +47,9 @@ namespace RentaCarWepAPI.Controllers
             }
         }
         [HttpPost("Add")]
-        public IActionResult Add(User user, IPersonCheckService personCheckService)
+        public IActionResult Add(User user)
         {
-            var result = _userService.Add(user, personCheckService);
+            var result = _userService.Add(user);
             if (result.Success)
             {
                 return Ok(result);
@@ -60,9 +60,9 @@ namespace RentaCarWepAPI.Controllers
             }
         }
         [HttpPost("Delete")]
-        public IActionResult Delete(User user)
+        public IActionResult Delete(int id)
         {
-            var result = _userService.Delete(user);
+            var result = _userService.Delete(id);
             if (result.Success)
             {
                 return Ok(result);
@@ -73,9 +73,9 @@ namespace RentaCarWepAPI.Controllers
             }
         }
         [HttpPost("Update")]
-        public IActionResult Update(User user)
+        public IActionResult Update(int id)
         {
-            var result = _userService.Update(user);
+            var result = _userService.Update(id);
             if (result.Success)
             {
                 return Ok(result);

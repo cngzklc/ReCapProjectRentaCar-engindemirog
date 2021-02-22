@@ -71,9 +71,9 @@ namespace RentaCarWepAPI.Controllers
             }
         }
         [HttpPost("Delete")]
-        public IActionResult Delete(Customer customer)
+        public IActionResult Delete(int id)
         {
-            var result = _customerService.Delete(customer);
+            var result = _customerService.Delete(id);
             if (result.Success)
             {
                 return Ok(result);
@@ -84,9 +84,9 @@ namespace RentaCarWepAPI.Controllers
             }
         }
         [HttpPost("Update")]
-        public IActionResult Update(Customer customer)
+        public IActionResult Update(int id)
         {
-            var result = _customerService.Update(customer);
+            var result = _customerService.Update(id);
             if (result.Success)
             {
                 return Ok(result);

@@ -20,11 +20,12 @@ namespace RentaCarBusiness.Concrete
             _userDal = userDal;
         }
 
-        public IResult Add(User user, IPersonCheckService personCheckService)
+        public IResult Add(User user)
         {
             try
             {
-                if (personCheckService.CheckIfRealPerson(user))
+                MernisServiceAdapter mernisServiceAdapter = new MernisServiceAdapter();
+                if (mernisServiceAdapter.CheckIfRealPerson(user))
                 {
                     _userDal.Add(user);
                     return new SuccessResult(Messages.Added(user));
@@ -39,8 +40,9 @@ namespace RentaCarBusiness.Concrete
         {
             return new SuccessDataResult<User>(_userDal.Get(u => u.UserId == id));
         }
-        public IResult Delete(User user)
+        public IResult Delete(int id)
         {
+            User user = _userDal.Get(u => u.UserId == id);
             _userDal.Delete(user);
             return new SuccessResult(Messages.Deleted(user));
         }
@@ -57,8 +59,9 @@ namespace RentaCarBusiness.Concrete
             //}
         }
 
-        public IResult Update(User user)
+        public IResult Update(int id)
         {
+            User user = _userDal.Get(u => u.UserId == id);
             _userDal.Update(user);
             return new SuccessResult(Messages.Updated(user));
         }

@@ -14,8 +14,8 @@ namespace RentaCarBusiness.Abstract
         IResult RentableCar(int carId);
         IDataResult<Rental> GetById(int Id);
         IResult Add(Rental rental);
-        IResult Delete(Rental rental);
-        IResult Update(Rental rental);
+        IResult Delete(int id);
+        IResult Update(int id);
         IDataResult<List<NotRentableCarDto>> GetNotRentableCarDetails();
     }
 }

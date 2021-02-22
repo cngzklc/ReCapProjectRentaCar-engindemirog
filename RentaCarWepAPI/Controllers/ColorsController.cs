@@ -58,9 +58,9 @@ namespace RentaCarWepAPI.Controllers
             }
         }
         [HttpPost("Delete")]
-        public IActionResult Delete(Color color)
+        public IActionResult Delete(int id)
         {
-            var result = _colorService.Delete(color);
+            var result = _colorService.Delete(id);
             if (result.Success)
             {
                 return Ok(result);
@@ -71,9 +71,9 @@ namespace RentaCarWepAPI.Controllers
             }
         }
         [HttpPost("Update")]
-        public IActionResult Update(Color color)
+        public IActionResult Update(int id)
         {
-            var result = _colorService.Update(color);
+            var result = _colorService.Update(id);
             if (result.Success)
             {
                 return Ok(result);

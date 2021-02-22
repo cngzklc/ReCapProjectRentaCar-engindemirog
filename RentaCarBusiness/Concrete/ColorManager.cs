@@ -31,14 +31,16 @@ namespace RentaCarBusiness.Concrete
             return new SuccessResult(Messages.Added(color));
         }
 
-        public IResult Delete(Color color)
+        public IResult Delete(int id)
         {
+            Color color = _colorDal.Get(c => c.ColorId == id);
             _colorDal.Delete(color);
             return new SuccessResult(Messages.Added(color));
         }
 
-        public IResult Update(Color color)
+        public IResult Update(int id)
         {
+            Color color = _colorDal.Get(c => c.ColorId == id);
             _colorDal.Update(color);
             return new SuccessResult(Messages.Added(color));
         }

@@ -18,8 +18,8 @@ namespace RentaCarBusiness.Abstract
         IDataResult<List<CarDetailDto>> GetRentableCarsDto();
         IDataResult<List<Car>> GetRentableCars2();
         IResult Add(Car car);
-        IResult Delete(Car car);
-        IResult Update(Car car);
+        IResult Delete(int id);
+        IResult Update(int id);
 
     }
 }

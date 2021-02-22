@@ -94,7 +94,7 @@ namespace RentaCarUI
             };
             EfUserDal efUserDal = new EfUserDal();
             UserManager userManager = new UserManager(efUserDal);
-            Console.WriteLine(userManager.Add(user, new MernisServiceAdapter()).Message);
+            Console.WriteLine(userManager.Add(user).Message);
 
             //Console.WriteLine("Kişi eklenmiştir");
         }

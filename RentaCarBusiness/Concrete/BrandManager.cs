@@ -24,14 +24,16 @@ namespace RentaCarBusiness.Concrete
             return new SuccessResult(Messages.Added(brand));
         }
 
-        public IResult Delete(Brand brand)
+        public IResult Delete(int id)
         {
+            Brand brand = _brandDal.Get(b => b.BrandId == id);
             _brandDal.Delete(brand);
             return new SuccessResult(Messages.Added(brand));
         }
 
-        public IResult Update(Brand brand)
+        public IResult Update(int id)
         {
+            Brand brand = _brandDal.Get(b => b.BrandId == id);
             _brandDal.Update(brand);
             return new SuccessResult(Messages.Added(brand));
         }
