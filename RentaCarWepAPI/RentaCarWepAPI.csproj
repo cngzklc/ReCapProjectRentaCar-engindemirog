@@ -15,9 +15,5 @@
     <ProjectReference Include="..\RentaCarEntities\RentaCarEntities.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="CarImagesFolder\" />
-  </ItemGroup>
-
 
 </Project>
