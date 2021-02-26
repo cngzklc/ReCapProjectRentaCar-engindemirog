@@ -19,11 +19,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RentaCarWinForms", "RentaCa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RentaCarWepAPI", "RentaCarWepAPI\RentaCarWepAPI.csproj", "{8DAF8D9F-70B3-4640-8B4E-65AE8D82187A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CarImages", "CarImages", "{EB9BF850-6438-47E2-A4DD-6BB23CA9ED05}"
-	ProjectSection(SolutionItems) = preProject
-		..\..\..\..\..\Pictures\CK Logo.png = ..\..\..\..\..\Pictures\CK Logo.png
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

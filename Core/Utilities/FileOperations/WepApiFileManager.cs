@@ -80,7 +80,7 @@ namespace Core.Utilities.FileOperations
                + DateTime.Now.Day + "_"
                + DateTime.Now.Year + fileExtension;
 
-            string path = Path.Combine(Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).FullName + @"\CarImages");
+            string path = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).FullName + @"\CarImagesFolder");
 
             string result = $@"{path}\{guidFileName}";
 
