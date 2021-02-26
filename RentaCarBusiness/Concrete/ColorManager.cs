@@ -1,7 +1,9 @@
-﻿using Core.Constants;
+﻿using Core.Aspects.Autofac.Validation;
+using Core.Constants;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using RentaCarBusiness.Abstract;
+using RentaCarBusiness.ValidationRules.FluentValidation;
 using RentaCarDataAccess.Abstract;
 using RentaCarEntities.Concrete;
 using System;
@@ -25,6 +27,7 @@ namespace RentaCarBusiness.Concrete
         {
             return new SuccessDataResult<Color>(_colorDal.Get(c => c.ColorId == colorId));
         }
+        [ValidationAspect(typeof(ColorValidator))]
         public IResult Add(Color color)
         {
             _colorDal.Add(color);

@@ -1,7 +1,9 @@
-﻿using Core.Constants;
+﻿using Core.Aspects.Autofac.Validation;
+using Core.Constants;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using RentaCarBusiness.Abstract;
+using RentaCarBusiness.ValidationRules.FluentValidation;
 using RentaCarDataAccess.Abstract;
 using RentaCarDataAccess.DTOs;
 using RentaCarEntities.Concrete;
@@ -19,7 +21,7 @@ namespace RentaCarBusiness.Concrete
             _rentalDal = rentalDal;
         }
 
-
+        [ValidationAspect(typeof(RentalValidator))]
         public IResult Add(Rental rental)
         {
             var result = RentableCar(rental.CarId);

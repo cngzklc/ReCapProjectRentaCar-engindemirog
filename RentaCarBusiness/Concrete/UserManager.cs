@@ -1,13 +1,17 @@
-﻿using Core.Constants;
+﻿using Core.Aspects.Autofac.Validation;
+using Core.Constants;
 using Core.Entities;
 using Core.MernisAdapter;
+using Core.Utilities.Business;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using RentaCarBusiness.Abstract;
+using RentaCarBusiness.ValidationRules.FluentValidation;
 using RentaCarDataAccess.Abstract;
 using RentaCarEntities.Concrete;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace RentaCarBusiness.Concrete
@@ -20,21 +24,17 @@ namespace RentaCarBusiness.Concrete
             _userDal = userDal;
         }
 
+        [ValidationAspect(typeof(UserValidator))]
         public IResult Add(User user)
         {
-            try
+            IResult result = BusinessRules.Run(CheckIfNationalIdExists(user.NationalId), CheckIfRealPerson(user));
+            if (!result.Success)
             {
-                MernisServiceAdapter mernisServiceAdapter = new MernisServiceAdapter();
-                if (mernisServiceAdapter.CheckIfRealPerson(user))
-                {
-                    _userDal.Add(user);
-                    return new SuccessResult(Messages.Added(user));
-                }
-                else
-                {
-                    return new ErrorResult(Messages.Invalid(user));
-                }
-            }catch (Exception ex) { return new ErrorResult(ex.Message); }
+                return new ErrorResult(Messages.Invalid(user));
+
+            }
+            _userDal.Add(user);
+            return new SuccessResult(Messages.Added(user));
         }
         public IDataResult<User> GetById(int id)
         {
@@ -46,7 +46,6 @@ namespace RentaCarBusiness.Concrete
             _userDal.Delete(user);
             return new SuccessResult(Messages.Deleted(user));
         }
-
         public IDataResult<List<User>> GetAll()
         {
             //if (_userDal.GetAll().Equals(null))
@@ -55,7 +54,7 @@ namespace RentaCarBusiness.Concrete
             //}
             //else
             //{
-                return new SuccessDataResult<List<User>>(_userDal.GetAll());
+            return new SuccessDataResult<List<User>>(_userDal.GetAll());
             //}
         }
 
@@ -64,6 +63,28 @@ namespace RentaCarBusiness.Concrete
             User user = _userDal.Get(u => u.UserId == id);
             _userDal.Update(user);
             return new SuccessResult(Messages.Updated(user));
+        }
+
+        IResult CheckIfRealPerson(User user)
+        {
+            MernisServiceAdapter mernisServiceAdapter = new MernisServiceAdapter();
+            if (!mernisServiceAdapter.CheckIfRealPerson(user))
+            {
+                return new ErrorResult(Messages.NotRealPerson);
+            }
+            return new SuccessResult();
+        }
+        IResult CheckIfNationalIdExists(string nationalId)
+        {
+            var result = _userDal.GetAll(c => c.NationalId == nationalId).Any();
+            if (result)
+            {
+                return new ErrorResult(Messages.NationalIdExisted);
+            }
+            else
+            {
+                return new SuccessResult();
+            }
         }
     }
 }

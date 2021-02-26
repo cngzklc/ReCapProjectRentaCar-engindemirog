@@ -30,6 +30,8 @@ namespace RentaCarBusiness.DependencyResolvers.Autofac
             builder.RegisterType<EfRentalDal>().As<IRentalDal>().SingleInstance();
             builder.RegisterType<UserManager>().As<IUserService>().SingleInstance();
             builder.RegisterType<EfUserDal>().As<IUserDal>().SingleInstance();
+            builder.RegisterType<EfCarImageDal>().As<ICarImageDal>().SingleInstance();
+            builder.RegisterType<CarImageManager>().As<ICarImageService>().SingleInstance();
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
             builder.RegisterAssemblyTypes(assembly).AsImplementedInterfaces()

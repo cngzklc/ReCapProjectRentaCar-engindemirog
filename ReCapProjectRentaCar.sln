@@ -17,7 +17,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentaCarWfUI", "RentaCarWfU
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RentaCarWinForms", "RentaCarWinForms\RentaCarWinForms.csproj", "{E48E8376-2B6D-446C-8C50-B5A846FC7303}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentaCarWepAPI", "RentaCarWepAPI\RentaCarWepAPI.csproj", "{8DAF8D9F-70B3-4640-8B4E-65AE8D82187A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RentaCarWepAPI", "RentaCarWepAPI\RentaCarWepAPI.csproj", "{8DAF8D9F-70B3-4640-8B4E-65AE8D82187A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CarImages", "CarImages", "{EB9BF850-6438-47E2-A4DD-6BB23CA9ED05}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\..\Pictures\CK Logo.png = ..\..\..\..\..\Pictures\CK Logo.png
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

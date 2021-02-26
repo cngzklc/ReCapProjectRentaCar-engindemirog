@@ -1,7 +1,9 @@
-﻿using Core.Constants;
+﻿using Core.Aspects.Autofac.Validation;
+using Core.Constants;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using RentaCarBusiness.Abstract;
+using RentaCarBusiness.ValidationRules.FluentValidation;
 using RentaCarDataAccess.Abstract;
 using RentaCarEntities.Concrete;
 using System;
@@ -18,6 +20,7 @@ namespace RentaCarBusiness.Concrete
             _brandDal = brandDal;
         }
 
+        [ValidationAspect(typeof(BrandValidator))]
         public IResult Add(Brand brand)
         {
             _brandDal.Add(brand);

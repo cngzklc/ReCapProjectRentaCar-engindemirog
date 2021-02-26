@@ -1,7 +1,9 @@
-﻿using Core.Constants;
+﻿using Core.Aspects.Autofac.Validation;
+using Core.Constants;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using RentaCarBusiness.Abstract;
+using RentaCarBusiness.ValidationRules.FluentValidation;
 using RentaCarDataAccess.Abstract;
 using RentaCarEntities.Concrete;
 using System;
@@ -17,6 +19,7 @@ namespace RentaCarBusiness.Concrete
         {
             _customerDal = customerDal;
         }
+        [ValidationAspect(typeof(CustomerValidator))]
         public IResult Add(Customer customer)
         {
             _customerDal.Add(customer);

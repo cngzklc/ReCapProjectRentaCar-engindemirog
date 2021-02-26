@@ -57,7 +57,7 @@ namespace RentaCarDataAccess.Concrete.EntityFramework
         {
             using (RentaCarContext context = new RentaCarContext())
             {
-                var resault = from c in context.Cars
+                var result = from c in context.Cars
                               join r in context.Rentals on c.CarId equals r.CarId where r.ReturnDate == null
                               join o in context.Colors on c.ColorId equals o.ColorId
 
@@ -71,7 +71,7 @@ namespace RentaCarDataAccess.Concrete.EntityFramework
                                   DailyPrice = c.DailyPrice,
                                   Description = c.Description
                               };
-                return resault.ToList();
+                return result.ToList();
             }
         }
 

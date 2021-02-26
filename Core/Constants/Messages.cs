@@ -17,6 +17,9 @@ namespace Core.Constants
         //public static string NotRentableCar(object entity) { return string.Format("Not a rentable {0}!", entity.GetType().Name); }
         public static string NotRentableCar = "Kirada olan araç gelmeden kiralanamaz!";
         public static string RentableCar = "Kiralanabilir araç";
+        public static string NoMoreCarImagesCanBeAdded = "Daha fazla araba resmi eklenemez";
+        public static string NotRealPerson = "Kişiye ait bilgileri kontrol ediniz! Girilen kişi doğrulanamadı!";
+        public static string NationalIdExisted = "Bu kimlik numarası önceden girilmiş!";
 
         public static string Updated(object entity) { return string.Format("{0} updated!", entity.GetType().Name); }
         public static string Deleted(object entity) { return string.Format("{0} deleted!", entity.GetType().Name); }
