@@ -20,48 +20,50 @@ namespace RentaCarWepAPI.Controllers
         }
 
         [HttpPost("Add")]
-        public IActionResult Add([FromForm] CarImage carImage, [FromForm(Name = ("CarImages"))] IFormFile file)
+        public IActionResult Add([FromForm] CarImage carImage, [FromForm(Name = ("image"))] IFormFile file)
         {
             var result = _carImageService.Add(carImage, file);
-            if (result.Success)
+            if (!result.Success)
             {
-                return Ok(result);
+                return BadRequest(result);                
             }
-            else
-            {
-                return BadRequest(result);
-            }
+            return Ok(result);
+
         }
         [HttpPost("Delete")]
-        public IActionResult Delete([FromForm(Name = ("CarImageId"))] int carImageId)
+        public IActionResult Delete([FromForm(Name = ("image"))] int carImageId)
         {
             var result = _carImageService.Delete(carImageId);
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-            else
+            if (!result.Success)
             {
                 return BadRequest(result);
             }
+            return Ok(result);
         }
         [HttpPost("Update")]
-        public IActionResult Update([FromForm(Name = ("CarImageId"))] int carImageId)
+        public IActionResult Update([FromForm(Name = ("image"))] int carImageId)
         {
             var result = _carImageService.Update(carImageId);
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-            else
+            if (!result.Success)
             {
                 return BadRequest(result);
             }
+            return Ok(result);
         }
         [HttpGet("GetAll")]
         public IActionResult GetAll()
         {
             var result = _carImageService.GetAll();
+            if (!result.Success)
+            {
+                return BadRequest(result);
+            }
+            return Ok(result);
+        }
+        [HttpGet("GetById")]
+        public IActionResult GetById([FromForm(Name = ("CarImageId"))] int carImageId)
+        {
+            var result = _carImageService.GetById(carImageId);
             if (result.Success)
             {
                 return Ok(result);
@@ -71,10 +73,10 @@ namespace RentaCarWepAPI.Controllers
                 return BadRequest(result);
             }
         }
-        [HttpGet("GetById")]
-        public IActionResult GetById([FromForm(Name = ("CarImageId"))] int carImageId)
+        [HttpGet("GetCarImages")]
+        public IActionResult GetCarImages([FromForm(Name = ("CarId"))] int carId)
         {
-            var result = _carImageService.GetById(carImageId);
+            var result = _carImageService.GetCarImages(carId);
             if (result.Success)
             {
                 return Ok(result);

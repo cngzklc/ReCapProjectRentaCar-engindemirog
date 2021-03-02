@@ -1,7 +1,7 @@
 ﻿using Core.Aspects.Autofac.Validation;
 using Core.Constants;
 using Core.Utilities.Business;
-using Core.Utilities.FileOperations;
+using Core.Utilities.Helpers;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using Microsoft.AspNetCore.Http;
@@ -11,6 +11,7 @@ using RentaCarDataAccess.Abstract;
 using RentaCarEntities.Concrete;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace RentaCarBusiness.Concrete
@@ -27,11 +28,11 @@ namespace RentaCarBusiness.Concrete
         public IResult Add(CarImage carImage, IFormFile formFile)
         {
             IResult result = BusinessRules.Run(CheckIfMaxQty(carImage.CarId));
-            if(result != null)
+            if(!result.Success)
             {
                 return result;
             }
-            carImage.ImagePath = WepApiFileManager.AddAsync(formFile);
+            carImage.ImagePath = FileHelper.Add(formFile);
             carImage.Date = DateTime.Now;
             _carImageDal.Add(carImage);
             return new SuccessResult(Messages.Added(carImage));
@@ -65,14 +66,32 @@ namespace RentaCarBusiness.Concrete
         {
             return new SuccessDataResult<List<CarImage>>(_carImageDal.GetAll(c => c.CarId == carId));
         }
+
+        [ValidationAspect(typeof(CarImageValidator))]
+        public IDataResult<List<CarImage>> GetImagesByCarId(int id)
+        {
+            return new SuccessDataResult<List<CarImage>>(CheckIfAnyCarImageExists(id));
+        }
         IResult CheckIfMaxQty(int carId)
         {
             var result = _carImageDal.GetAll(c => c.CarId == carId);
-            if (result.Count > 5)
+            if (result.Count >= 5)
             {
                 return new ErrorResult(Messages.NoMoreCarImagesCanBeAdded);
             }
             return new SuccessResult();
+        }
+        private List<CarImage> CheckIfAnyCarImageExists(int carId)
+        {
+            string path = Environment.CurrentDirectory + @"\ImagesFolder\CarImagesFolder\CK Logo.png";
+            var result = _carImageDal.GetAll(c => c.CarId == carId).Any();
+
+            if (result)
+            {
+                return _carImageDal.GetAll(p => p.CarId == carId);
+            }
+
+            return new List<CarImage> { new CarImage { CarId = carId, ImagePath = path, Date = DateTime.Now } };
         }
     }
 }

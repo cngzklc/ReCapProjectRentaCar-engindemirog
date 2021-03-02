@@ -15,7 +15,7 @@ namespace Core.Utilities.Results.Concrete
         // this(success) deyince success isteyen consructor da çalışır.
         public Result(bool success, string message) :this(success)
         {
-            Message = Message;
+            Message = message;
         }
         public bool  Success { get; }
         public string Message { get; }

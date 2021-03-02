@@ -1,4 +1,5 @@
 ﻿using Core.Utilities.Results.Abstract;
+using Core.Utilities.Results.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,14 +10,18 @@ namespace Core.Utilities.Business
     {
         public static IResult Run(params IResult[] rules)
         {
-            foreach (var rule in rules)
+            int x=0;
+            for ( int i = 0; i < rules.Length; i++)
             {
-                if (!rule.Success)
+                x = i;
+                if (rules[i].Success)
                 {
-                    return rule;
+                    return rules[i];
+                    i++;
                 }
             }
-            return null;
+
+            return rules[x];
         }
     }
 }
