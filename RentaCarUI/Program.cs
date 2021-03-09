@@ -9,6 +9,7 @@ using Core.DataAccess.EntityFramework;
 using RentaCarDataAccess.DTOs;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using Core.Entities.Concrete;
 
 namespace RentaCarUI
 {
@@ -75,7 +76,7 @@ namespace RentaCarUI
         {
             User user = new User()
             {
-                FirstName = "Cengiz",LastName = "Kılıç",NationalId = "25684908800",DateOfBirth = new DateTime(1985, 7, 8),Password = "1234",Email = "cngzklc@gmail.com"
+                FirstName = "Cengiz",LastName = "Kılıç",NationalId = "25684908800",DateOfBirth = new DateTime(1985, 7, 8),/*Password = "1234",*/Email = "cngzklc@gmail.com"
             };
             MernisServiceAdapter mernisServiceAdapter = new MernisServiceAdapter();
             var resaultt = mernisServiceAdapter.CheckIfRealPerson(user);
@@ -89,7 +90,7 @@ namespace RentaCarUI
                 LastName = "Kılıç",
                 NationalId = "20120111206",
                 DateOfBirth = new DateTime(2014, 08, 30).Date,
-                Password = "1234",
+                //Password = "1234",
                 Email = "eylulll.kilic@gmail.com"
             };
             EfUserDal efUserDal = new EfUserDal();
@@ -117,7 +118,7 @@ namespace RentaCarUI
         {
             Car car = new Car()
             {
-                CarId = 10,
+                Id = 10,
                 BrandId = 5,
                 CarName = "Brava",
                 ColorId = 3,
@@ -127,7 +128,7 @@ namespace RentaCarUI
             };
             Car car1 = new Car()
             {
-                CarId = 11,
+                Id = 11,
                 BrandId = 4,
                 CarName = "CLK 200",
                 ColorId = 1,
@@ -148,7 +149,7 @@ namespace RentaCarUI
         }
         private static void CarTest1()
         {
-            Car car = new Car() { CarId = 7, BrandId = 4, CarName = "fgdfg", ColorId = 6, DailyPrice = 200, Description = "Hatchback Sedan", ModelYear = 2015 };
+            Car car = new Car() { Id = 7, BrandId = 4, CarName = "fgdfg", ColorId = 6, DailyPrice = 200, Description = "Hatchback Sedan", ModelYear = 2015 };
             Console.WriteLine(Messages.Added(car));
         }
         private static void CarDetail()

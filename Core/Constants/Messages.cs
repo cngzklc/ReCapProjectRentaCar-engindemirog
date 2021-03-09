@@ -21,6 +21,14 @@ namespace Core.Constants
         public static string NotRealPerson = "Kişiye ait bilgileri kontrol ediniz! Girilen kişi doğrulanamadı!";
         public static string NationalIdExisted = "Bu kimlik numarası önceden girilmiş!";
 
+
+        public static string UserNotFound = "Kullanıcı bulunamadı!";
+        public static string SuccessfulLogin = "Sisteme Giriş Başarılı!";
+        public static string PasswordError = "Hatalı Şifre!";
+        public static string UserAlreadyExists= "Kullanıcı zaten var!";
+        public static string UserRegistered= "Kullanıcı başarı ile kayıt edildi!";
+        public static string AccessTokenCreated= "Access Token başarı ile oluşturuldu!";
+
         public static string Updated(object entity) { return string.Format("{0} updated!", entity.GetType().Name); }
         public static string Deleted(object entity) { return string.Format("{0} deleted!", entity.GetType().Name); }
     }

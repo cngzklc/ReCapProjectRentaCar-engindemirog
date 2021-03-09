@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RentaCarBusiness.Abstract;
-using RentaCarEntities.Concrete;
+using Core.Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -59,31 +59,31 @@ namespace RentaCarWepAPI.Controllers
                 return BadRequest(result);
             }
         }
-        [HttpPost("Delete")]
-        public IActionResult Delete(int id)
-        {
-            var result = _userService.Delete(id);
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-            else
-            {
-                return BadRequest(result);
-            }
-        }
-        [HttpPost("Update")]
-        public IActionResult Update(int id)
-        {
-            var result = _userService.Update(id);
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-            else
-            {
-                return BadRequest(result);
-            }
-        }
+        //[HttpPost("Delete")]
+        //public IActionResult Delete(int id)
+        //{
+        //    var result = _userService.Delete(id);
+        //    if (result.Success)
+        //    {
+        //        return Ok(result);
+        //    }
+        //    else
+        //    {
+        //        return BadRequest(result);
+        //    }
+        //}
+        //[HttpPost("Update")]
+        //public IActionResult Update(int id)
+        //{
+        //    var result = _userService.Update(id);
+        //    if (result.Success)
+        //    {
+        //        return Ok(result);
+        //    }
+        //    else
+        //    {
+        //        return BadRequest(result);
+        //    }
+        //}
     }
 }

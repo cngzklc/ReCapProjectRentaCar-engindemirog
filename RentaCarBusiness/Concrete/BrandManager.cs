@@ -29,14 +29,14 @@ namespace RentaCarBusiness.Concrete
 
         public IResult Delete(int id)
         {
-            Brand brand = _brandDal.Get(b => b.BrandId == id);
+            Brand brand = _brandDal.Get(b => b.Id == id);
             _brandDal.Delete(brand);
             return new SuccessResult(Messages.Added(brand));
         }
 
         public IResult Update(int id)
         {
-            Brand brand = _brandDal.Get(b => b.BrandId == id);
+            Brand brand = _brandDal.Get(b => b.Id == id);
             _brandDal.Update(brand);
             return new SuccessResult(Messages.Added(brand));
         }
@@ -47,7 +47,7 @@ namespace RentaCarBusiness.Concrete
 
         public IDataResult<Brand> GetById(int brandId)
         {
-            return new SuccessDataResult<Brand>(_brandDal.Get(p => p.BrandId == brandId));
+            return new SuccessDataResult<Brand>(_brandDal.Get(p => p.Id == brandId));
         }
 
     }

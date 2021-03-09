@@ -16,7 +16,7 @@ namespace RentaCarDataAccess.Comparer
                 return false;
 
             //Check whether the products' properties are equal.
-            return car1.CarId == car2.CarId &&
+            return car1.Id == car2.Id &&
                 car1.BrandId == car2.BrandId &&
                 car1.CarName == car2.CarName &&
                 car1.ColorId == car2.ColorId &&
@@ -34,7 +34,7 @@ namespace RentaCarDataAccess.Comparer
             int hashCarName = car.CarName == null ? 0 : car.CarName.GetHashCode();
 
             //Get hash code for the Code field.
-            int hashCarId = car.CarId.GetHashCode();
+            int hashCarId = car.Id.GetHashCode();
 
             //Calculate the hash code for the product.
             return hashCarName ^ hashCarId;

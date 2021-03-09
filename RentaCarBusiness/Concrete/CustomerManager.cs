@@ -28,20 +28,20 @@ namespace RentaCarBusiness.Concrete
 
         public IResult Delete(int id)
         {
-            Customer customer = _customerDal.Get(c => c.CustomerId == id);
+            Customer customer = _customerDal.Get(c => c.Id == id);
             _customerDal.Delete(customer);
             return new SuccessResult(Messages.Added(customer));
         }
 
         public IResult Update(int id)
         {
-            Customer customer = _customerDal.Get(c => c.CustomerId == id);
+            Customer customer = _customerDal.Get(c => c.Id == id);
             _customerDal.Update(customer);
             return new SuccessResult(Messages.Added(customer));
         }
         public IDataResult<Customer> GetById(int id)
         {
-            return new SuccessDataResult<Customer>(_customerDal.Get(c => c.CustomerId == id));
+            return new SuccessDataResult<Customer>(_customerDal.Get(c => c.Id == id));
         }
 
         public IDataResult<List<Customer>> GetAll()

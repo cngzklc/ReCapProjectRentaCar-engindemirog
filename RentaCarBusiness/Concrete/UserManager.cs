@@ -8,7 +8,7 @@ using Core.Utilities.Results.Concrete;
 using RentaCarBusiness.Abstract;
 using RentaCarBusiness.ValidationRules.FluentValidation;
 using RentaCarDataAccess.Abstract;
-using RentaCarEntities.Concrete;
+using Core.Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,32 +38,32 @@ namespace RentaCarBusiness.Concrete
         }
         public IDataResult<User> GetById(int id)
         {
-            return new SuccessDataResult<User>(_userDal.Get(u => u.UserId == id));
+            return new SuccessDataResult<User>(_userDal.Get(u => u.Id == id));
         }
-        public IResult Delete(int id)
-        {
-            User user = _userDal.Get(u => u.UserId == id);
-            _userDal.Delete(user);
-            return new SuccessResult(Messages.Deleted(user));
-        }
+        //public IResult Delete(int id)
+        //{
+        //    User user = _userDal.Get(u => u.Id == id);
+        //    _userDal.Delete(user);
+        //    return new SuccessResult(Messages.Deleted(user));
+        //}
         public IDataResult<List<User>> GetAll()
         {
-            //if (_userDal.GetAll().Equals(null))
-            //{
-            //    return new  ErrorDataResult<List<User>>(_userDal.GetAll(),Messages.NotListed(new List<User>()));
-            //}
-            //else
-            //{
-            return new SuccessDataResult<List<User>>(_userDal.GetAll());
-            //}
+            if (_userDal.GetAll().Equals(null))
+            {
+                return new ErrorDataResult<List<User>>(_userDal.GetAll(), Messages.NotListed(new List<User>()));
+            }
+            else
+            {
+                return new SuccessDataResult<List<User>>(_userDal.GetAll());
+            }
         }
 
-        public IResult Update(int id)
-        {
-            User user = _userDal.Get(u => u.UserId == id);
-            _userDal.Update(user);
-            return new SuccessResult(Messages.Updated(user));
-        }
+        //public IResult Update(int id)
+        //{
+        //    User user = _userDal.Get(u => u.Id == id);
+        //    _userDal.Update(user);
+        //    return new SuccessResult(Messages.Updated(user));
+        //}
 
         IResult CheckIfRealPerson(User user)
         {
@@ -79,12 +79,23 @@ namespace RentaCarBusiness.Concrete
             var result = _userDal.GetAll(c => c.NationalId == nationalId).Any();
             if (result)
             {
-                return new ErrorResult(Messages.NationalIdExisted);
+                return new ErrorResult(Messages.NationalIdExisted) ;
             }
-            else
-            {
-                return new SuccessResult();
-            }
+
+           return new SuccessResult();
+           
+        }
+
+        public IDataResult<List<OperationClaim>> GetClaims(User user)
+        {
+            return new SuccessDataResult<List<OperationClaim>>( _userDal.GetClaims(user));
+
+
+        }
+
+        public IDataResult<User> GetByMail(string email)
+        {
+            return new SuccessDataResult<User>(_userDal.Get(u => u.Email == email));
         }
     }
 }

@@ -17,7 +17,7 @@ namespace Core.Utilities.Business
                 if (rules[i].Success)
                 {
                     return rules[i];
-                    i++;
+                    x++;
                 }
             }
 

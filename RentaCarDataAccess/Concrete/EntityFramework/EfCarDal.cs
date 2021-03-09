@@ -16,8 +16,8 @@ namespace RentaCarDataAccess.Concrete.EntityFramework
             using (RentaCarContext context = new RentaCarContext())
             {
                 var resault = from c in context.Cars
-                              join b in context.Brands on c.BrandId equals b.BrandId
-                              join o in context.Colors on c.ColorId equals o.ColorId
+                              join b in context.Brands on c.BrandId equals b.Id
+                              join o in context.Colors on c.ColorId equals o.Id
 
                               select new CarDetailDto
                               {
@@ -32,15 +32,15 @@ namespace RentaCarDataAccess.Concrete.EntityFramework
         }
         public List<Car> GetRentableCars()
         {
-            return GetAll().Where(c => !GetNotRentableCars().Any(nrc => nrc.CarId == c.CarId)).ToList();
+            return GetAll().Where(c => !GetNotRentableCars().Any(nrc => nrc.Id == c.Id)).ToList();
         }
         public List<CarDetailDto> GetRentableCarsDto()
         {
             using (RentaCarContext context = new RentaCarContext())
             {
-                var resault = from c in GetAll().Where(c => !GetNotRentableCars().Any(nrc => nrc.CarId == c.CarId)).ToList()
-                              join b in context.Brands on c.BrandId equals b.BrandId
-                              join o in context.Colors on c.ColorId equals o.ColorId
+                var resault = from c in GetAll().Where(c => !GetNotRentableCars().Any(nrc => nrc.Id == c.Id)).ToList()
+                              join b in context.Brands on c.BrandId equals b.Id
+                              join o in context.Colors on c.ColorId equals o.Id
 
                               select new CarDetailDto
                               {
@@ -58,12 +58,12 @@ namespace RentaCarDataAccess.Concrete.EntityFramework
             using (RentaCarContext context = new RentaCarContext())
             {
                 var result = from c in context.Cars
-                              join r in context.Rentals on c.CarId equals r.CarId where r.ReturnDate == null
-                              join o in context.Colors on c.ColorId equals o.ColorId
+                              join r in context.Rentals on c.Id equals r.CarId where r.ReturnDate == null
+                              join o in context.Colors on c.ColorId equals o.Id
 
                               select new Car
                               {
-                                  CarId = c.CarId,
+                                  Id = c.Id,
                                   BrandId = c.BrandId,
                                   ColorId = c.ColorId,
                                   CarName = c.CarName,

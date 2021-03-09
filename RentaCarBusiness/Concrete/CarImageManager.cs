@@ -40,14 +40,14 @@ namespace RentaCarBusiness.Concrete
 
         public IResult Delete(int id)
         {
-            CarImage carImage = _carImageDal.Get(c => c.CarImageId == id);
+            CarImage carImage = _carImageDal.Get(c => c.Id == id);
             _carImageDal.Delete(carImage);
             return new SuccessResult(Messages.Added(carImage));
         }
 
         public IResult Update(int id)
         {
-            CarImage carImage = _carImageDal.Get(c => c.CarImageId == id);
+            CarImage carImage = _carImageDal.Get(c => c.Id == id);
             _carImageDal.Update(carImage);
             return new SuccessResult(Messages.Added(carImage));
         }
@@ -59,7 +59,7 @@ namespace RentaCarBusiness.Concrete
 
         public IDataResult<CarImage> GetById(int carImageId)
         {
-            return new SuccessDataResult<CarImage>(_carImageDal.Get(c => c.CarImageId == carImageId));
+            return new SuccessDataResult<CarImage>(_carImageDal.Get(c => c.Id == carImageId));
         }
 
         public IDataResult<List<CarImage>> GetCarImages(int carId)

@@ -30,7 +30,7 @@ namespace RentaCarBusiness.Concrete
 
         public IDataResult<List<Car>> GetById(int id)
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.CarId == id));
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.Id == id));
         }
 
         public IDataResult<List<Car>> GetByDailyPrice(decimal min, decimal max)
@@ -72,14 +72,14 @@ namespace RentaCarBusiness.Concrete
 
         public IResult Delete(int id)
         {
-            Car car = _carDal.Get(c => c.CarId == id);
+            Car car = _carDal.Get(c => c.Id == id);
             _carDal.Delete(car);
             return new SuccessResult(Messages.Added(car));
         }
 
         public IResult Update(int id)
         {
-            Car car = _carDal.Get(c => c.CarId == id);
+            Car car = _carDal.Get(c => c.Id == id);
             _carDal.Update(car);
             return new SuccessResult(Messages.Added(car));
         }

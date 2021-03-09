@@ -2,6 +2,7 @@
 using RentaCarDataAccess.Abstract;
 using RentaCarDataAccess.DTOs;
 using RentaCarEntities.Concrete;
+using Core.Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,13 +18,13 @@ namespace RentaCarDataAccess.Concrete.InMemory
         {
             _rentals = new List<Rental>()
             {
-                new Rental() {RentalId=1, CarId=1, CustomerId=1, RentDate=new DateTime(2021,2,15).Date, ReturnDate= new DateTime(2021,2,17).Date },
-                new Rental() {RentalId=2, CarId=1, CustomerId=2, RentDate=new DateTime(2021,2,17).Date, ReturnDate= null },            
-                new Rental() {RentalId=3, CarId=3, CustomerId=1, RentDate=new DateTime(2021,2,10).Date, ReturnDate= new DateTime(2021,2,14).Date },
-                new Rental() {RentalId=4, CarId=5, CustomerId=1, RentDate=new DateTime(2021,2,01).Date, ReturnDate= null },            
-                new Rental() {RentalId=5, CarId=2, CustomerId=2, RentDate=new DateTime(2021,2,15).Date, ReturnDate= new DateTime(2021,2,17).Date },
-                new Rental() {RentalId=6, CarId=1, CustomerId=1, RentDate=new DateTime(2021,2,15).Date, ReturnDate= new DateTime(2021,2,17).Date },
-                new Rental() {RentalId=7, CarId=1, CustomerId=1, RentDate=new DateTime(2021,2,15).Date, ReturnDate= new DateTime(2021,2,17).Date }
+                new Rental() {Id=1, CarId=1, CustomerId=1, RentDate=new DateTime(2021,2,15).Date, ReturnDate= new DateTime(2021,2,17).Date },
+                new Rental() {Id=2, CarId=1, CustomerId=2, RentDate=new DateTime(2021,2,17).Date, ReturnDate= null },            
+                new Rental() {Id=3, CarId=3, CustomerId=1, RentDate=new DateTime(2021,2,10).Date, ReturnDate= new DateTime(2021,2,14).Date },
+                new Rental() {Id=4, CarId=5, CustomerId=1, RentDate=new DateTime(2021,2,01).Date, ReturnDate= null },            
+                new Rental() {Id=5, CarId=2, CustomerId=2, RentDate=new DateTime(2021,2,15).Date, ReturnDate= new DateTime(2021,2,17).Date },
+                new Rental() {Id=6, CarId=1, CustomerId=1, RentDate=new DateTime(2021,2,15).Date, ReturnDate= new DateTime(2021,2,17).Date },
+                new Rental() {Id=7, CarId=1, CustomerId=1, RentDate=new DateTime(2021,2,15).Date, ReturnDate= new DateTime(2021,2,17).Date }
             };
         }
 
@@ -34,7 +35,7 @@ namespace RentaCarDataAccess.Concrete.InMemory
 
         public void Delete(Rental rental)
         {
-            Rental rentalToDelete = _rentals.SingleOrDefault(b => b.RentalId == rental.RentalId);
+            Rental rentalToDelete = _rentals.SingleOrDefault(b => b.Id == rental.Id);
             _rentals.Remove(rentalToDelete);
         }
 
@@ -70,14 +71,14 @@ namespace RentaCarDataAccess.Concrete.InMemory
             List<User> _users = inMemoryUserDal.GetAll();
 
                 var result = from c in _cars
-                             join r in _rentals on c.CarId equals r.CarId  where r.ReturnDate == null
-                             join cu in _customers on r.CustomerId equals cu.CustomerId
-                             join u in _users on cu.UserId equals u.UserId
-                             join b in _brands on c.BrandId equals b.BrandId
+                             join r in _rentals on c.Id equals r.CarId  where r.ReturnDate == null
+                             join cu in _customers on r.CustomerId equals cu.Id
+                             join u in _users on cu.UserId equals u.Id
+                             join b in _brands on c.BrandId equals b.Id
 
                              select new NotRentableCarDto
                              {
-                                 CarId = c.CarId,
+                                 CarId = c.Id,
                                  BrandName = b.BrandName,
                                  CarName = c.CarName,
                                  Description = c.Description,
@@ -92,7 +93,7 @@ namespace RentaCarDataAccess.Concrete.InMemory
 
         public void Update(Rental rental)
         {
-            Rental rentalToUpdate = _rentals.SingleOrDefault(b => b.RentalId == rental.RentalId);
+            Rental rentalToUpdate = _rentals.SingleOrDefault(b => b.Id == rental.Id);
             rentalToUpdate.CarId = rental.CarId;
             rentalToUpdate.CustomerId = rental.CustomerId;
             rentalToUpdate.RentDate = rental.RentDate;

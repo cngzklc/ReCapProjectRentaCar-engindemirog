@@ -40,7 +40,7 @@ namespace RentaCarBusiness.Concrete
 
         public IResult Delete(int id)
         {
-            Rental rental = _rentalDal.Get(r => r.RentalId == id);
+            Rental rental = _rentalDal.Get(r => r.Id == id);
             _rentalDal.Delete(rental);
             return new SuccessResult(Messages.Deleted(rental));
         }
@@ -56,7 +56,7 @@ namespace RentaCarBusiness.Concrete
         }
         public IDataResult<Rental> GetById( int id)
         {
-            return new SuccessDataResult<Rental>(_rentalDal.Get(r=> r.RentalId == id));
+            return new SuccessDataResult<Rental>(_rentalDal.Get(r=> r.Id == id));
         }
 
         public IResult RentableCar(int carId)
@@ -74,7 +74,7 @@ namespace RentaCarBusiness.Concrete
 
         public IResult Update(int id)
         {
-            Rental rental = _rentalDal.Get(r => r.RentalId == id);
+            Rental rental = _rentalDal.Get(r => r.Id == id);
             _rentalDal.Update(rental);
             return new SuccessResult(Messages.Updated(rental));
         }

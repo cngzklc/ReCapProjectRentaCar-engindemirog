@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using RentaCarEntities.Concrete;
+using Core.Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,9 +13,9 @@ namespace RentaCarBusiness.ValidationRules.FluentValidation
             RuleFor(u => u.Email).NotEmpty().Matches(@"(@)(.+)$");
             RuleFor(u => u.FirstName).NotEmpty();
             RuleFor(u => u.LastName).NotEmpty();
-            RuleFor(u => u.DateOfBirth).NotEmpty();
+            //RuleFor(u => u.DateOfBirth).NotEmpty();
             RuleFor(u => u.NationalId).Length(11);
-            RuleFor(u => u.Password).NotEmpty().Matches(@"^(?=.*[0 - 9])(?=.*[a - z])(?=.*[A - Z])(?=.*[*.!@$% ^&(){ } []:;<>,.?/ ~_ +-=|\]).{ 8,32}$");
+            //RuleFor(u => u.PasswordHash).NotEmpty().Matches(@"^(?=.*[0 - 9])(?=.*[a - z])(?=.*[A - Z])(?=.*[*.!@$% ^&(){ } []:;<>,.?/ ~_ +-=|\]).{ 8,32}$");
         }
     }
 }

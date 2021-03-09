@@ -15,15 +15,15 @@ namespace RentaCarDataAccess.Concrete.EntityFramework
             using (RentaCarContext context = new RentaCarContext())
             {
                 var result = from c in context.Cars
-                             join b in context.Brands on c.BrandId equals b.BrandId
-                             join r in context.Rentals on c.CarId equals r.CarId where r.ReturnDate == null
-                             join cu in context.Customers on r.CustomerId equals cu.CustomerId
-                             join u in context.Users on cu.UserId equals u.UserId
+                             join b in context.Brands on c.BrandId equals b.Id
+                             join r in context.Rentals on c.Id equals r.CarId where r.ReturnDate == null
+                             join cu in context.Customers on r.CustomerId equals cu.Id
+                             join u in context.Users on cu.UserId equals u.Id
 
 
                              select new NotRentableCarDto
                              {
-                                 CarId = c.CarId,
+                                 CarId = c.Id,
                                  BrandName = b.BrandName,
                                  CarName = c.CarName,
                                  Description = c.Description,

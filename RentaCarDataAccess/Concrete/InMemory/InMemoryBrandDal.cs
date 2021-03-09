@@ -16,15 +16,15 @@ namespace RentaCarDataAccess.Concrete.InMemory
         {
             _brands = new List<Brand>
             {
-                new Brand { BrandId=1, BrandName="Audi"},
-                new Brand { BrandId=2, BrandName="BMW"},
-                new Brand { BrandId=3, BrandName="Ford"},
-                new Brand { BrandId=4, BrandName="Mercedes"},
-                new Brand { BrandId=5, BrandName="Fiat"},
-                new Brand { BrandId=6, BrandName="Renault"},
-                new Brand { BrandId=7, BrandName="Volkswagen"},
-                new Brand { BrandId=8, BrandName="Skoda"},
-                new Brand { BrandId=9, BrandName="Peugeot"}
+                new Brand { Id=1, BrandName="Audi"},
+                new Brand { Id=2, BrandName="BMW"},
+                new Brand { Id=3, BrandName="Ford"},
+                new Brand { Id=4, BrandName="Mercedes"},
+                new Brand { Id=5, BrandName="Fiat"},
+                new Brand { Id=6, BrandName="Renault"},
+                new Brand { Id=7, BrandName="Volkswagen"},
+                new Brand { Id=8, BrandName="Skoda"},
+                new Brand { Id=9, BrandName="Peugeot"}
             };
         }
         public void Add(Brand brand)
@@ -34,7 +34,7 @@ namespace RentaCarDataAccess.Concrete.InMemory
 
         public void Delete(Brand brand)
         {
-            Brand brandToDelete = _brands.SingleOrDefault(b => b.BrandId == brand.BrandId);
+            Brand brandToDelete = _brands.SingleOrDefault(b => b.Id == brand.Id);
             _brands.Remove(brandToDelete);
         }
 
@@ -59,7 +59,7 @@ namespace RentaCarDataAccess.Concrete.InMemory
 
         public void Update(Brand brand)
         {
-            Brand brandToUpdate = _brands.SingleOrDefault(b => b.BrandId == brand.BrandId);
+            Brand brandToUpdate = _brands.SingleOrDefault(b => b.Id == brand.Id);
             brandToUpdate.BrandName = brand.BrandName;
         }
     }

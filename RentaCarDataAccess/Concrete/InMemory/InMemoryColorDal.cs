@@ -15,15 +15,15 @@ namespace RentaCarDataAccess.Concrete.InMemory
         {
             _colors = new List<Color>()
             {
-                new Color() { ColorId=1 , ColorName="Siyah" },
-                new Color() { ColorId=2 , ColorName="Beyaz" },
-                new Color() { ColorId=3 , ColorName="Kırmızı" },
-                new Color() { ColorId=4 , ColorName="Mavi" },
-                new Color() { ColorId=5 , ColorName="Gri" },
-                new Color() { ColorId=6 , ColorName="Yeşil" },
-                new Color() { ColorId=7 , ColorName="Bordo" },
-                new Color() { ColorId=8 , ColorName="Füme" },
-                new Color() { ColorId=9 , ColorName="Lacivert" },
+                new Color() { Id=1 , ColorName="Siyah" },
+                new Color() { Id=2 , ColorName="Beyaz" },
+                new Color() { Id=3 , ColorName="Kırmızı" },
+                new Color() { Id=4 , ColorName="Mavi" },
+                new Color() { Id=5 , ColorName="Gri" },
+                new Color() { Id=6 , ColorName="Yeşil" },
+                new Color() { Id=7 , ColorName="Bordo" },
+                new Color() { Id=8 , ColorName="Füme" },
+                new Color() { Id=9 , ColorName="Lacivert" },
             };
         }
         public void Add(Color entity)
@@ -33,7 +33,7 @@ namespace RentaCarDataAccess.Concrete.InMemory
 
         public void Delete(Color entity)
         {
-            Color ColorToDelete = _colors.SingleOrDefault(c => c.ColorId == entity.ColorId);
+            Color ColorToDelete = _colors.SingleOrDefault(c => c.Id == entity.Id);
             _colors.Remove(ColorToDelete);
         }
 
@@ -58,9 +58,9 @@ namespace RentaCarDataAccess.Concrete.InMemory
 
         public void Update(Color entity)
         {
-            Color ColorToUpdated = _colors.SingleOrDefault(c => c.ColorId == entity.ColorId);
+            Color ColorToUpdated = _colors.SingleOrDefault(c => c.Id == entity.Id);
             ColorToUpdated.ColorName = entity.ColorName;
-            ColorToUpdated.ColorId = entity.ColorId;
+            ColorToUpdated.Id = entity.Id;
         }
     }
 }

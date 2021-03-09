@@ -18,15 +18,15 @@ namespace RentaCarDataAccess.Concrete.InMemory
         {
             _cars = new List<Car>
             {
-                new Car {CarId =1, BrandId=1, ColorId=1, CarName = "A6", DailyPrice=700, ModelYear=2015, Description="Sedan, Otomatik" }, // teslim edilmedi
-                new Car {CarId =2, BrandId=4, ColorId=6, CarName = "A180", DailyPrice=600, ModelYear=2016, Description="Hatchback, Otomatik" },
-                new Car {CarId =3, BrandId=3, ColorId=4, CarName = "Mondeo", DailyPrice=500, ModelYear=2008, Description="Sedan, Manuel" },
-                new Car {CarId =4, BrandId=2, ColorId=3, CarName = "1.16i", DailyPrice=500, ModelYear=2020, Description="Hatchback, Otomatik" },
-                new Car {CarId =5, BrandId=6, ColorId=1, CarName = "Symbol", DailyPrice=250, ModelYear=2008, Description="Sedan, Manuel" }, // teslim edilmedi
-                new Car {CarId =6, BrandId=4, ColorId=8, CarName = "E200", DailyPrice=500, ModelYear=2010, Description="Sedan, Manuel" },
-                new Car {CarId =7, BrandId=3, ColorId=7, CarName = "Focus", DailyPrice=500, ModelYear=2018, Description="Sedan, Otomatik" },
-                new Car {CarId =8, BrandId=2, ColorId=2, CarName = "5.25", DailyPrice=900, ModelYear=2020, Description="Sedan, Otomatik" },
-                new Car {CarId =9, BrandId=6, ColorId=5, CarName = "Megan", DailyPrice=500, ModelYear=2017, Description="Hatchback, Otomatik" }
+                new Car {Id =1, BrandId=1, ColorId=1, CarName = "A6", DailyPrice=700, ModelYear=2015, Description="Sedan, Otomatik" }, // teslim edilmedi
+                new Car {Id =2, BrandId=4, ColorId=6, CarName = "A180", DailyPrice=600, ModelYear=2016, Description="Hatchback, Otomatik" },
+                new Car {Id =3, BrandId=3, ColorId=4, CarName = "Mondeo", DailyPrice=500, ModelYear=2008, Description="Sedan, Manuel" },
+                new Car {Id =4, BrandId=2, ColorId=3, CarName = "1.16i", DailyPrice=500, ModelYear=2020, Description="Hatchback, Otomatik" },
+                new Car {Id =5, BrandId=6, ColorId=1, CarName = "Symbol", DailyPrice=250, ModelYear=2008, Description="Sedan, Manuel" }, // teslim edilmedi
+                new Car {Id =6, BrandId=4, ColorId=8, CarName = "E200", DailyPrice=500, ModelYear=2010, Description="Sedan, Manuel" },
+                new Car {Id =7, BrandId=3, ColorId=7, CarName = "Focus", DailyPrice=500, ModelYear=2018, Description="Sedan, Otomatik" },
+                new Car {Id =8, BrandId=2, ColorId=2, CarName = "5.25", DailyPrice=900, ModelYear=2020, Description="Sedan, Otomatik" },
+                new Car {Id =9, BrandId=6, ColorId=5, CarName = "Megan", DailyPrice=500, ModelYear=2017, Description="Hatchback, Otomatik" }
             };
         }
         public void Add(Car car)
@@ -51,7 +51,7 @@ namespace RentaCarDataAccess.Concrete.InMemory
         }
         public void Delete(Car car)
         {
-            Car carToDelete = _cars.SingleOrDefault(c => c.CarId == car.CarId);
+            Car carToDelete = _cars.SingleOrDefault(c => c.Id == car.Id);
             _cars.Remove(carToDelete);
         }
         public Car Get(Expression<Func<Car, bool>> filter)
@@ -77,8 +77,8 @@ namespace RentaCarDataAccess.Concrete.InMemory
             InMemoryColorDal colorDal = new InMemoryColorDal();
 
             var resault = from c in GetAll()
-                          join b in brandDal.GetAll() on c.BrandId equals b.BrandId
-                          join o in colorDal.GetAll() on c.ColorId equals o.ColorId
+                          join b in brandDal.GetAll() on c.BrandId equals b.Id
+                          join o in colorDal.GetAll() on c.ColorId equals o.Id
 
                           select new CarDetailDto
                           {
@@ -96,12 +96,12 @@ namespace RentaCarDataAccess.Concrete.InMemory
             List<Rental> _rentals = inMemoryRentalDal.GetAll();
 
             var result = from c in _cars
-                         join r in _rentals on c.CarId equals r.CarId
+                         join r in _rentals on c.Id equals r.CarId
                          where r.ReturnDate == null
 
                          select new Car
                          {
-                             CarId = c.CarId,
+                             Id = c.Id,
                              BrandId = c.BrandId,
                              ColorId = c.ColorId,
                              CarName = c.CarName,
@@ -118,11 +118,11 @@ namespace RentaCarDataAccess.Concrete.InMemory
         }
         public List<Car> GetRentableCars() 
         {
-            return  GetAll().Where(c => !GetNotRentableCars().Any(nrc => nrc.CarId == c.CarId)).ToList();
+            return  GetAll().Where(c => !GetNotRentableCars().Any(nrc => nrc.Id == c.Id)).ToList();
         }
         public void Update(Car car)
         {
-            Car carToUpdate = _cars.SingleOrDefault(c => c.CarId == car.CarId);
+            Car carToUpdate = _cars.SingleOrDefault(c => c.Id == car.Id);
             carToUpdate.BrandId = car.BrandId;
             carToUpdate.ColorId = car.ColorId;
             carToUpdate.DailyPrice = car.DailyPrice;
@@ -136,8 +136,8 @@ namespace RentaCarDataAccess.Concrete.InMemory
             InMemoryColorDal colorDal = new InMemoryColorDal();
 
             var resault = from c in GetAll()
-                          join b in brandDal.GetAll() on c.BrandId equals b.BrandId
-                          join o in colorDal.GetAll() on c.ColorId equals o.ColorId
+                          join b in brandDal.GetAll() on c.BrandId equals b.Id
+                          join o in colorDal.GetAll() on c.ColorId equals o.Id
 
                           select new CarDetailDto
                           {

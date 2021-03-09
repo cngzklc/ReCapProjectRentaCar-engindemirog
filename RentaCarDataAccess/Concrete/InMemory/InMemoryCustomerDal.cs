@@ -15,10 +15,10 @@ namespace RentaCarDataAccess.Concrete.InMemory
         {
             _customers = new List<Customer>()
                 {
-                    new Customer() { CustomerId=1, UserId=1, CompanyName= "Cengiz A.Ş"},
-                    new Customer() { CustomerId=2, UserId=2, CompanyName= "Kazım A.Ş"},
-                    new Customer() { CustomerId=3, UserId=3, CompanyName= "Cengiz A.Ş"},
-                    new Customer() { CustomerId=4, UserId=4, CompanyName= "Deniz A.Ş"}
+                    new Customer() { Id=1, UserId=1, CompanyName= "Cengiz A.Ş"},
+                    new Customer() { Id=2, UserId=2, CompanyName= "Kazım A.Ş"},
+                    new Customer() { Id=3, UserId=3, CompanyName= "Cengiz A.Ş"},
+                    new Customer() { Id=4, UserId=4, CompanyName= "Deniz A.Ş"}
                 };
         }
         public void Add(Customer entity)
@@ -28,7 +28,7 @@ namespace RentaCarDataAccess.Concrete.InMemory
 
         public void Delete(Customer entity)
         {
-            Customer CustomerToDelete = _customers.SingleOrDefault(c => c.CustomerId == entity.CustomerId);
+            Customer CustomerToDelete = _customers.SingleOrDefault(c => c.Id == entity.Id);
             _customers.Remove(CustomerToDelete);
         }
 
@@ -53,7 +53,7 @@ namespace RentaCarDataAccess.Concrete.InMemory
 
         public void Update(Customer entity)
         {
-            Customer CustomerToUpdated = _customers.SingleOrDefault(c => c.CustomerId == entity.CustomerId);
+            Customer CustomerToUpdated = _customers.SingleOrDefault(c => c.Id == entity.Id);
             CustomerToUpdated.CompanyName = entity.CompanyName;
             CustomerToUpdated.UserId = entity.UserId;
         }

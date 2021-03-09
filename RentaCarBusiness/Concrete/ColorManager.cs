@@ -25,7 +25,7 @@ namespace RentaCarBusiness.Concrete
         }
         public IDataResult<Color> GetById(int colorId)
         {
-            return new SuccessDataResult<Color>(_colorDal.Get(c => c.ColorId == colorId));
+            return new SuccessDataResult<Color>(_colorDal.Get(c => c.Id == colorId));
         }
         [ValidationAspect(typeof(ColorValidator))]
         public IResult Add(Color color)
@@ -36,14 +36,14 @@ namespace RentaCarBusiness.Concrete
 
         public IResult Delete(int id)
         {
-            Color color = _colorDal.Get(c => c.ColorId == id);
+            Color color = _colorDal.Get(c => c.Id == id);
             _colorDal.Delete(color);
             return new SuccessResult(Messages.Added(color));
         }
 
         public IResult Update(int id)
         {
-            Color color = _colorDal.Get(c => c.ColorId == id);
+            Color color = _colorDal.Get(c => c.Id == id);
             _colorDal.Update(color);
             return new SuccessResult(Messages.Added(color));
         }
