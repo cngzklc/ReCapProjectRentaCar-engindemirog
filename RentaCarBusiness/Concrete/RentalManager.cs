@@ -3,6 +3,7 @@ using Core.Constants;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using RentaCarBusiness.Abstract;
+using RentaCarBusiness.BusinessAspect.Autofac;
 using RentaCarBusiness.ValidationRules.FluentValidation;
 using RentaCarDataAccess.Abstract;
 using RentaCarDataAccess.DTOs;
@@ -50,6 +51,8 @@ namespace RentaCarBusiness.Concrete
             return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll(r => r.CustomerId == customerId));
         }
 
+        [SecuredOperation("rental.listed, admin")]
+        [ValidationAspect(typeof(RentalValidator))]
         public IDataResult<List<Rental>> GetAll()
         {
             return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll());
