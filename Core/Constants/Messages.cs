@@ -28,6 +28,7 @@ namespace Core.Constants
         public static string UserAlreadyExists= "Kullanıcı zaten var!";
         public static string UserRegistered= "Kullanıcı başarı ile kayıt edildi!";
         public static string AccessTokenCreated= "Access Token başarı ile oluşturuldu!";
+        public static string UserNotRegistered="Kullanıcı kayıt edilemedi!";
 
         public static string Updated(object entity) { return string.Format("{0} updated!", entity.GetType().Name); }
         public static string Deleted(object entity) { return string.Format("{0} deleted!", entity.GetType().Name); }

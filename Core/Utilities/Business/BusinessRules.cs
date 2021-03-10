@@ -10,18 +10,16 @@ namespace Core.Utilities.Business
     {
         public static IResult Run(params IResult[] rules)
         {
-            int x=0;
-            for ( int i = 0; i < rules.Length; i++)
+            foreach (var rule in rules)
             {
-                x = i;
-                if (rules[i].Success)
+                if (!rule.Success)
                 {
-                    return rules[i];
-                    x++;
+                    //Bütün kuralları gez, kurala uymayan varsa bize döndür.
+                    return rule;
                 }
-            }
 
-            return rules[x];
+            }
+            return null;
         }
     }
 }

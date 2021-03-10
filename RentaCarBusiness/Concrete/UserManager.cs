@@ -28,7 +28,7 @@ namespace RentaCarBusiness.Concrete
         public IResult Add(User user)
         {
             IResult result = BusinessRules.Run(CheckIfNationalIdExists(user.NationalId), CheckIfRealPerson(user));
-            if (!result.Success)
+            if (result !=null)
             {
                 return new ErrorResult(Messages.Invalid(user));
 

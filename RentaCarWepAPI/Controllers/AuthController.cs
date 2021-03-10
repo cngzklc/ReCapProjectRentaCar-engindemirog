@@ -10,7 +10,7 @@ namespace RentaCarWepAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AuthController: Controller
+    public class AuthController : Controller
     {
         private IAuthService _authService;
 
@@ -20,7 +20,7 @@ namespace RentaCarWepAPI.Controllers
         }
 
         [HttpPost("login")]
-        public ActionResult Login (UserForLoginDto userForLoginDto)
+        public ActionResult Login(UserForLoginDto userForLoginDto)
         {
             var userToLogin = _authService.Login(userForLoginDto);
             if (!userToLogin.Success)
@@ -47,13 +47,17 @@ namespace RentaCarWepAPI.Controllers
             }
 
             var registerResult = _authService.Register(userForRegisterDto, userForRegisterDto.Password);
-            var result = _authService.CreteAccessToken(registerResult.Data);
-            if (result.Success)
+            if (registerResult.Success)
             {
-                return Ok(result.Data);
-            }
+                var result = _authService.CreteAccessToken(registerResult.Data);
+                if (result.Success)
+                {
+                    return Ok(result.Data);
+                }
 
-            return BadRequest(result.Message);
+                return BadRequest(result.Message);
+            }
+            return BadRequest(registerResult.Message);
         }
     }
 }

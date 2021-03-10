@@ -30,12 +30,18 @@ namespace RentaCarBusiness.Concrete
                 LastName = userForRegisterDto.LastName,
                 PasswordHash = passwordHash,
                 PasswordSalt = passwordSalt,
-                DateOfBirth =userForRegisterDto.DateOfBirth,
-                NationalId=userForRegisterDto.NationalId,
+                DateOfBirth = userForRegisterDto.DateOfBirth,
+                NationalId = userForRegisterDto.NationalId,
                 Status = true
             };
-            _userService.Add(user);
-            return new SuccessDataResult<User>(user, Messages.UserRegistered);
+
+            var result = _userService.Add(user);
+            if (result.Success)
+            {
+                return new SuccessDataResult<User>(user, Messages.UserRegistered);
+            }
+            return new ErrorDataResult<User>(user, Messages.UserNotRegistered);
+
         }
 
         public IDataResult<User> Login(UserForLoginDto userForLoginDto)
@@ -54,7 +60,7 @@ namespace RentaCarBusiness.Concrete
 
         public IResult UserExists(string email)
         {
-            if (_userService.GetByMail(email).Data !=null)
+            if (_userService.GetByMail(email).Data != null)
             {
                 return new ErrorResult(Messages.UserAlreadyExists);
             }
