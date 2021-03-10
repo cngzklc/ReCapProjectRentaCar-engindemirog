@@ -2,6 +2,7 @@
 using Core.Extensions;
 using Core.Utilities.Security.Encryption;
 using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -40,12 +41,12 @@ namespace Core.Utilities.Security.JWT
 
         private JwtSecurityToken CreateJwtSecurityToken(TokenOptions tokenOptions, 
             User user, 
-            Microsoft.IdentityModel.Tokens.SigningCredentials signingCredentials, 
+            SigningCredentials signingCredentials, 
             List<OperationClaim> operationClaims)
         {
             var jwt = new JwtSecurityToken(
                 issuer: tokenOptions.Issuer,
-                audience: tokenOptions.Audince,
+                audience: tokenOptions.Audience,
                 expires: _accessTokenExpiration,
                 notBefore: DateTime.Now,
                 claims: SetClaims(user, operationClaims),

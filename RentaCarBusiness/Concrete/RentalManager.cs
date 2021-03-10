@@ -22,6 +22,7 @@ namespace RentaCarBusiness.Concrete
             _rentalDal = rentalDal;
         }
 
+        [SecuredOperation("add,admin")]
         [ValidationAspect(typeof(RentalValidator))]
         public IResult Add(Rental rental)
         {
@@ -51,7 +52,7 @@ namespace RentaCarBusiness.Concrete
             return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll(r => r.CustomerId == customerId));
         }
 
-        [SecuredOperation("rental.listed, admin")]
+        [SecuredOperation("list")]
         [ValidationAspect(typeof(RentalValidator))]
         public IDataResult<List<Rental>> GetAll()
         {

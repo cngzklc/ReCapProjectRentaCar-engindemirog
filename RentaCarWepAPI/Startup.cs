@@ -59,7 +59,7 @@ namespace RentaCarWepAPI
                     ValidateIssuer = true,
                     ValidateAudience = true,
                     ValidIssuer = tokenOptions.Issuer,
-                    ValidAudience = tokenOptions.Audince,
+                    ValidAudience = tokenOptions.Audience,
                     ValidateIssuerSigningKey = true,
                     IssuerSigningKey = SecurityKeyHelper.CreateSecurityKey(tokenOptions.SecurityKey)
                 };

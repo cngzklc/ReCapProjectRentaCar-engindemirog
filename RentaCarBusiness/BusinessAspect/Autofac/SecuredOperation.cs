@@ -1,12 +1,12 @@
-﻿using Castle.DynamicProxy;
+﻿//using Castle.DynamicProxy;
+using Castle.DynamicProxy;
+using Core.Constants;
 using Core.Extensions;
 using Core.Utilities.Interceptors;
 using Core.Utilities.IoC;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace RentaCarBusiness.BusinessAspect.Autofac
 {
@@ -22,6 +22,14 @@ namespace RentaCarBusiness.BusinessAspect.Autofac
         protected override void OnBefore(IInvocation invocation)
         {
             var roleClaims = _httpContextAccessor.HttpContext.User.ClaimsRoles();
+            foreach (var role in _roles)
+            {
+                if (roleClaims.Contains(role))
+                {
+                    return;
+                }
+            }
+            throw new Exception(Messages.AuthorizationDenied);
         }
     }
 }

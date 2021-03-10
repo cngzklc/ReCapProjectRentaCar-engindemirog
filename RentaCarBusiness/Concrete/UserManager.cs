@@ -27,7 +27,7 @@ namespace RentaCarBusiness.Concrete
         [ValidationAspect(typeof(UserValidator))]
         public IResult Add(User user)
         {
-            IResult result = BusinessRules.Run(CheckIfNationalIdExists(user.NationalId), CheckIfRealPerson(user));
+            IResult result = BusinessRules.Run(CheckIfNationalIdExists(user.NationalId)/*, CheckIfRealPerson(user)*/);
             if (result !=null)
             {
                 return new ErrorResult(Messages.Invalid(user));
