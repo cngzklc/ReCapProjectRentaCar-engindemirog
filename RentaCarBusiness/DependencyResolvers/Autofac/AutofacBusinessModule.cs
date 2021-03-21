@@ -12,7 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace RentaCarBusiness.DependencyResolvers.Autofac
+namespace RentaCarBusiness.DependencyResolvers.Autofac //DependencyResolvers=Bağımlılık çözümlemeleri
 {
     public class AutofacBusinessModule : Module
     {
